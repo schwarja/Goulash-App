@@ -12,9 +12,37 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
+    // MARK: App Lifecycle Methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        print("Application will terminate - \(application)")
+    }
+    
+    func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
+        print("Application did receive memory warning - \(application)")
+    }
+}
+ 
+// MARK: UI Lifecycle Methods
+extension AppDelegate {
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("Application did become active - \(application)")
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        print("Application will resign active - \(application)")
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        print("Application will enter foreground - \(application)")
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print("Application did enter background - \(application)")
     }
 }
 

@@ -11,7 +11,7 @@
 		C117881A236ADC24005FC9C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178819236ADC24005FC9C0 /* SceneDelegate.swift */; };
 		C1178821236ADC28005FC9C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1178820236ADC28005FC9C0 /* Assets.xcassets */; };
 		C1178833236ADE9B005FC9C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1178832236ADE9B005FC9C0 /* LaunchScreen.storyboard */; };
-		C19CCAA7236ADF800011B111 /* PlacesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C19CCAA6236ADF800011B111 /* PlacesViewController.storyboard */; };
+		C192743C23705C5100A81743 /* UIViewController+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192743B23705C5100A81743 /* UIViewController+ConvenienceInit.swift */; };
 		C19CCAA9236ADF920011B111 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19CCAA8236ADF920011B111 /* PlacesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,7 +22,7 @@
 		C1178820236ADC28005FC9C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1178825236ADC28005FC9C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1178832236ADE9B005FC9C0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C19CCAA6236ADF800011B111 /* PlacesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlacesViewController.storyboard; sourceTree = "<group>"; };
+		C192743B23705C5100A81743 /* UIViewController+ConvenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ConvenienceInit.swift"; sourceTree = "<group>"; };
 		C19CCAA8236ADF920011B111 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		C19CCAAB236AEB8B0011B111 /* GoulashClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoulashClub.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +57,7 @@
 		C1178816236ADC24005FC9C0 /* GoulashClub */ = {
 			isa = PBXGroup;
 			children = (
+				C192743923705C2E00A81743 /* Utils */,
 				C117882E236ADD9A005FC9C0 /* Views */,
 				C117882B236ADC9D005FC9C0 /* Scenes */,
 				C19CCAAA236AE9BC0011B111 /* Resources */,
@@ -78,7 +79,6 @@
 		C117882C236ADCB1005FC9C0 /* Places */ = {
 			isa = PBXGroup;
 			children = (
-				C19CCAA6236ADF800011B111 /* PlacesViewController.storyboard */,
 				C19CCAA8236ADF920011B111 /* PlacesViewController.swift */,
 			);
 			path = Places;
@@ -107,6 +107,22 @@
 				C1178832236ADE9B005FC9C0 /* LaunchScreen.storyboard */,
 			);
 			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		C192743923705C2E00A81743 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C192743A23705C3500A81743 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C192743A23705C3500A81743 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C192743B23705C5100A81743 /* UIViewController+ConvenienceInit.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C19CCAAA236AE9BC0011B111 /* Resources */ = {
@@ -175,7 +191,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1178833236ADE9B005FC9C0 /* LaunchScreen.storyboard in Resources */,
-				C19CCAA7236ADF800011B111 /* PlacesViewController.storyboard in Resources */,
 				C1178821236ADC28005FC9C0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,6 +204,7 @@
 			files = (
 				C19CCAA9236ADF920011B111 /* PlacesViewController.swift in Sources */,
 				C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */,
+				C192743C23705C5100A81743 /* UIViewController+ConvenienceInit.swift in Sources */,
 				C117881A236ADC24005FC9C0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

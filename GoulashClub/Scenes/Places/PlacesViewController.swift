@@ -9,22 +9,24 @@
 import UIKit
 
 class PlacesViewController: UIViewController {
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setup()
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+// MARK: Private methods
+private extension PlacesViewController {
+    func setup() {
+        let label = UILabel(frame: CGRect(x: 40, y: 100, width: 50, height: 30))
+        label.text = "Hello"
+        label.textColor = .red
+        view.addSubview(label)
     }
-    */
-
 }

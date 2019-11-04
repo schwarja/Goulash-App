@@ -9,7 +9,7 @@
 import UIKit
 
 @available(iOS 13.0, *)
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -21,6 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         
         self.window = window
+    }
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        print("Continue user activity: \(userActivity)")
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

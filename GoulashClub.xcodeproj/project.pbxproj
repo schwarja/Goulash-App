@@ -13,6 +13,7 @@
 		C1178833236ADE9B005FC9C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1178832236ADE9B005FC9C0 /* LaunchScreen.storyboard */; };
 		C192743C23705C5100A81743 /* UIViewController+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192743B23705C5100A81743 /* UIViewController+ConvenienceInit.swift */; };
 		C19CCAA9236ADF920011B111 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19CCAA8236ADF920011B111 /* PlacesViewController.swift */; };
+		C1EEBD4E237070D0002E31DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD4D237070D0002E31DF /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		C192743B23705C5100A81743 /* UIViewController+ConvenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ConvenienceInit.swift"; sourceTree = "<group>"; };
 		C19CCAA8236ADF920011B111 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		C19CCAAB236AEB8B0011B111 /* GoulashClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoulashClub.entitlements; sourceTree = "<group>"; };
+		C1EEBD4D237070D0002E31DF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		C192743923705C2E00A81743 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C1EEBD4C237070A9002E31DF /* Configs */,
 				C192743A23705C3500A81743 /* Extensions */,
 			);
 			path = Utils;
@@ -131,6 +134,14 @@
 				C1178820236ADC28005FC9C0 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C1EEBD4C237070A9002E31DF /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				C1EEBD4D237070D0002E31DF /* Constants.swift */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1EEBD4E237070D0002E31DF /* Constants.swift in Sources */,
 				C19CCAA9236ADF920011B111 /* PlacesViewController.swift in Sources */,
 				C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */,
 				C192743C23705C5100A81743 /* UIViewController+ConvenienceInit.swift in Sources */,

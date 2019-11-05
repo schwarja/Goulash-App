@@ -35,11 +35,9 @@ extension UIView {
     func isTopConstraint(_ constraint: NSLayoutConstraint) -> Bool {
         if constraint.firstItem as? UIView == self && constraint.firstAttribute == .top {
             return true
-        }
-        else if constraint.secondItem as? UIView == self && constraint.secondAttribute == .top {
+        } else if constraint.secondItem as? UIView == self && constraint.secondAttribute == .top {
             return true
-        }
-        else {
+        } else {
             return false
         }
     }
@@ -57,7 +55,16 @@ extension UIView {
         }
 
         if let height = height {
-            let constraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: height.layoutRelation, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: height.layoutConstant)
+            let constraint = NSLayoutConstraint(
+                item: self,
+                attribute: .height,
+                relatedBy: height.layoutRelation,
+                toItem: nil, attribute:
+                .notAnAttribute,
+                multiplier: 1,
+                constant:
+                height.layoutConstant
+            )
             constraint.priority = UILayoutPriority(priority)
             addConstraint(constraint)
             constraints.append(constraint)
@@ -102,7 +109,9 @@ extension UIView {
     }
 
     @discardableResult
-    func attach(toView view: UIView? = nil, left: LayoutSpecifier? = nil, top: LayoutSpecifier? = nil, right: LayoutSpecifier? = nil, bottom: LayoutSpecifier? = nil, priority: Float = 1000) -> [NSLayoutConstraint] {
+    func attach(toView view: UIView? = nil, left: LayoutSpecifier? = nil, top: LayoutSpecifier? = nil, right: LayoutSpecifier? = nil, bottom: LayoutSpecifier? = nil, priority: Float = 1000)
+        -> [NSLayoutConstraint] {
+            
         guard let view = view ?? self.superview else {
             return []
         }
@@ -156,7 +165,9 @@ extension UIView {
     }
 
     @discardableResult
-    func attachToSafeArea(toView view: UIView? = nil, left: LayoutSpecifier? = nil, top: LayoutSpecifier? = nil, right: LayoutSpecifier? = nil, bottom: LayoutSpecifier? = nil) -> [NSLayoutConstraint] {
+    func attachToSafeArea(toView view: UIView? = nil, left: LayoutSpecifier? = nil, top: LayoutSpecifier? = nil, right: LayoutSpecifier? = nil, bottom: LayoutSpecifier? = nil)
+        -> [NSLayoutConstraint] {
+            
         guard let view = view ?? self.superview else {
             return []
         }
@@ -170,69 +181,31 @@ extension UIView {
         var result = [NSLayoutConstraint]()
         
         if let left = left {
-            if #available(iOS 11, *) {
-                let guide = view.safeAreaLayoutGuide
-                let constraint = self.leadingAnchor.constraint(to: guide.leadingAnchor, relation: left.layoutRelation, constant: left.layoutConstant)
-                superview.addConstraint(constraint)
-                result.append(constraint)
-            } else {
-                let constraint = self.leadingAnchor.constraint(to: view.leadingAnchor, relation: left.layoutRelation, constant: left.layoutConstant)
-                superview.addConstraint(constraint)
-                result.append(constraint)
-            }
+            let guide = view.safeAreaLayoutGuide
+            let constraint = self.leadingAnchor.constraint(to: guide.leadingAnchor, relation: left.layoutRelation, constant: left.layoutConstant)
+            superview.addConstraint(constraint)
+            result.append(constraint)
         }
 
         if let top = top {
-            if #available(iOS 11, *) {
-                let guide = view.safeAreaLayoutGuide
-                let constraint = self.topAnchor.constraint(to: guide.topAnchor, relation: top.layoutRelation, constant: top.layoutConstant)
-                superview.addConstraint(constraint)
-                result.append(constraint)
-            }
-            else if let controller = view.viewController, controller.view === view {
-                let guide = controller.topLayoutGuide
-                let constraint = self.topAnchor.constraint(to: guide.bottomAnchor, relation: top.layoutRelation, constant: top.layoutConstant)
-                superview.addConstraint(constraint)
-                result.append(constraint)
-            }
-            else {
-                let constraint = self.topAnchor.constraint(to: view.topAnchor, relation: top.layoutRelation, constant: top.layoutConstant)
-                superview.addConstraint(constraint)
-                result.append(constraint)
-            }
+            let guide = view.safeAreaLayoutGuide
+            let constraint = self.topAnchor.constraint(to: guide.topAnchor, relation: top.layoutRelation, constant: top.layoutConstant)
+            superview.addConstraint(constraint)
+            result.append(constraint)
         }
 
         if let right = right {
-            if #available(iOS 11, *) {
-                let guide = view.safeAreaLayoutGuide
-                let constraint = guide.rightAnchor.constraint(to: self.rightAnchor, relation: right.layoutRelation, constant: right.layoutConstant)
-                superview.addConstraint(constraint)
-                result.append(constraint)
-            } else {
-                let constraint = view.rightAnchor.constraint(to: self.rightAnchor, relation: right.layoutRelation, constant: right.layoutConstant)
-                superview.addConstraint(constraint)
-                result.append(constraint)
-            }
+            let guide = view.safeAreaLayoutGuide
+            let constraint = guide.rightAnchor.constraint(to: self.rightAnchor, relation: right.layoutRelation, constant: right.layoutConstant)
+            superview.addConstraint(constraint)
+            result.append(constraint)
         }
 
         if let bottom = bottom {
-            if #available(iOS 11, *) {
-                let guide = view.safeAreaLayoutGuide
-                let constraint = guide.bottomAnchor.constraint(to: self.bottomAnchor, relation: bottom.layoutRelation, constant: bottom.layoutConstant)
-                superview.addConstraint(constraint)
-                result.append(constraint)
-            }
-            else if let controller = view.viewController, controller.view === view {
-                let guide = controller.bottomLayoutGuide
-                let constraint = guide.topAnchor.constraint(to: self.bottomAnchor, relation: bottom.layoutRelation, constant: bottom.layoutConstant)
-                superview.addConstraint(constraint)
-                result.append(constraint)
-            }
-            else {
-                let constraint = view.bottomAnchor.constraint(to: self.bottomAnchor, relation: bottom.layoutRelation, constant: bottom.layoutConstant)
-                superview.addConstraint(constraint)
-                result.append(constraint)
-            }
+            let guide = view.safeAreaLayoutGuide
+            let constraint = guide.bottomAnchor.constraint(to: self.bottomAnchor, relation: bottom.layoutRelation, constant: bottom.layoutConstant)
+            superview.addConstraint(constraint)
+            result.append(constraint)
         }
         
         return result
@@ -273,7 +246,9 @@ extension UIView {
 
         translatesAutoresizingMaskIntoConstraints = false
 
-        superview.addConstraint(NSLayoutConstraint(item: self, attribute: .firstBaseline, relatedBy: baseline.layoutRelation, toItem: view, attribute: .lastBaseline, multiplier: 1, constant: baseline.layoutConstant))
+        superview.addConstraint(
+            NSLayoutConstraint(item: self, attribute: .firstBaseline, relatedBy: baseline.layoutRelation, toItem: view, attribute: .lastBaseline, multiplier: 1, constant: baseline.layoutConstant)
+        )
     }
 
     @discardableResult

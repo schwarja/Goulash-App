@@ -10,6 +10,6 @@ import UIKit
 
 extension UIViewController {
     convenience init?(coder: NSCoder) {
-        fatalError("Initializer with coder not implemented")
+        return nil
     }
 }

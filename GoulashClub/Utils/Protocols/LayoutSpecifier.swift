@@ -49,18 +49,15 @@ extension String: LayoutSpecifier {
         
         if layoutRelation == .equal {
             numberString = self
-        }
-        else if self.count > 2 {
+        } else if self.count > 2 {
             numberString = String(self[self.index(self.startIndex, offsetBy: 2)...])
-        }
-        else {
+        } else {
             numberString = ""
         }
         
         if let number = Double(numberString) {
             return CGFloat(number)
-        }
-        else {
+        } else {
             return 0.0
         }
     }
@@ -68,11 +65,9 @@ extension String: LayoutSpecifier {
     var layoutRelation: NSLayoutConstraint.Relation {
         if hasPrefix(">=") {
             return .greaterThanOrEqual
-        }
-        else if hasPrefix("<=") {
+        } else if hasPrefix("<=") {
             return .lessThanOrEqual
-        }
-        else {
+        } else {
             return .equal
         }
     }

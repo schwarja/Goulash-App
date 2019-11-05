@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Constants {
-    struct Scenes {
+enum Constants {
+    enum Scenes {
         static let `default` = "DefaultSceneConfiguration"
     }
 }

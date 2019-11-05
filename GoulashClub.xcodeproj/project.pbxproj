@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B85A090BAF1AB7430ECD5F1 /* Pods_GoulashClub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3814C23BFA578661915EAC53 /* Pods_GoulashClub.framework */; };
 		C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178817236ADC24005FC9C0 /* AppDelegate.swift */; };
 		C117881A236ADC24005FC9C0 /* DefaultSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178819236ADC24005FC9C0 /* DefaultSceneDelegate.swift */; };
 		C1178821236ADC28005FC9C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1178820236ADC28005FC9C0 /* Assets.xcassets */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3814C23BFA578661915EAC53 /* Pods_GoulashClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoulashClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8206A4DC65D60E0E1BF07076 /* Pods-GoulashClub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoulashClub.debug.xcconfig"; path = "Target Support Files/Pods-GoulashClub/Pods-GoulashClub.debug.xcconfig"; sourceTree = "<group>"; };
 		C1178814236ADC24005FC9C0 /* GoulashClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoulashClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1178817236ADC24005FC9C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1178819236ADC24005FC9C0 /* DefaultSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +44,7 @@
 		C1EEBD57237075E2002E31DF /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		C1EEBD5A23707628002E31DF /* LayoutSpecifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSpecifier.swift; sourceTree = "<group>"; };
 		C1EEBD5D23707B70002E31DF /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		CA18A9FC516678ABA0360287 /* Pods-GoulashClub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoulashClub.release.xcconfig"; path = "Target Support Files/Pods-GoulashClub/Pods-GoulashClub.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,17 +52,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B85A090BAF1AB7430ECD5F1 /* Pods_GoulashClub.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1129E92486C9B1D3285F2E43 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8206A4DC65D60E0E1BF07076 /* Pods-GoulashClub.debug.xcconfig */,
+				CA18A9FC516678ABA0360287 /* Pods-GoulashClub.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AF592909AF22E0BA6811FF94 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3814C23BFA578661915EAC53 /* Pods_GoulashClub.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C117880B236ADC24005FC9C0 = {
 			isa = PBXGroup;
 			children = (
 				C1178816236ADC24005FC9C0 /* GoulashClub */,
 				C1178815236ADC24005FC9C0 /* Products */,
+				1129E92486C9B1D3285F2E43 /* Pods */,
+				AF592909AF22E0BA6811FF94 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,9 +228,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1178828236ADC28005FC9C0 /* Build configuration list for PBXNativeTarget "GoulashClub" */;
 			buildPhases = (
+				700FBC7F33EF11919153D6F3 /* [CP] Check Pods Manifest.lock */,
 				C1178810236ADC24005FC9C0 /* Sources */,
 				C1178811236ADC24005FC9C0 /* Frameworks */,
 				C1178812236ADC24005FC9C0 /* Resources */,
+				C13336902371EA2000CD5247 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -260,6 +286,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		700FBC7F33EF11919153D6F3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoulashClub-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C13336902371EA2000CD5247 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C1178810236ADC24005FC9C0 /* Sources */ = {
@@ -400,6 +469,7 @@
 		};
 		C1178829236ADC28005FC9C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8206A4DC65D60E0E1BF07076 /* Pods-GoulashClub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GoulashClub/SupportingFiles/GoulashClub.entitlements;
@@ -422,6 +492,7 @@
 		};
 		C117882A236ADC28005FC9C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA18A9FC516678ABA0360287 /* Pods-GoulashClub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = GoulashClub/SupportingFiles/GoulashClub.entitlements;

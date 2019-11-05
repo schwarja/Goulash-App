@@ -12,13 +12,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
+    private var coordinator: AppCoordinator!
+    // MARK: Coordinator for iOS 12 and sooner
+    private var defaultCoordinator: DefaultCoordinator?
+    
     // MARK: App Lifecycle Methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.coordinator = AppCoordinator()
+        
         if #available(iOS 13.0, *) {} else {
             let window = UIWindow(frame: UIScreen.main.bounds)
             
-            window.rootViewController = PlacesViewController()
-            window.makeKeyAndVisible()
+            defaultCoordinator = DefaultCoordinator(window: window)
+            defaultCoordinator?.start()
             
             self.window = window
         }

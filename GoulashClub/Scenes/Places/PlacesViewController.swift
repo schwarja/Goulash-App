@@ -9,6 +9,7 @@
 import UIKit
 
 class PlacesViewController: UIViewController {
+    private var tableView: UITableView!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -24,9 +25,8 @@ class PlacesViewController: UIViewController {
 // MARK: Private methods
 private extension PlacesViewController {
     func setup() {
-        let label = UILabel(frame: CGRect(x: 40, y: 100, width: 50, height: 30))
-        label.text = "Hello"
-        label.textColor = .red
-        view.addSubview(label)
+        tableView = UITableView(frame: .zero, style: .plain)
+        view.addSubview(tableView)
+        tableView.attachToSuperview(useSafeArea: false)
     }
 }

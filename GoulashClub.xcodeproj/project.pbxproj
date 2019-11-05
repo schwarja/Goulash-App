@@ -8,25 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178817236ADC24005FC9C0 /* AppDelegate.swift */; };
-		C117881A236ADC24005FC9C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178819236ADC24005FC9C0 /* SceneDelegate.swift */; };
+		C117881A236ADC24005FC9C0 /* DefaultSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178819236ADC24005FC9C0 /* DefaultSceneDelegate.swift */; };
 		C1178821236ADC28005FC9C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1178820236ADC28005FC9C0 /* Assets.xcassets */; };
 		C1178833236ADE9B005FC9C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1178832236ADE9B005FC9C0 /* LaunchScreen.storyboard */; };
+		C133368F23716B7200CD5247 /* DefaultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C133368E23716B7200CD5247 /* DefaultCoordinator.swift */; };
 		C192743C23705C5100A81743 /* UIViewController+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192743B23705C5100A81743 /* UIViewController+ConvenienceInit.swift */; };
 		C19CCAA9236ADF920011B111 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19CCAA8236ADF920011B111 /* PlacesViewController.swift */; };
 		C1EEBD4E237070D0002E31DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD4D237070D0002E31DF /* Constants.swift */; };
+		C1EEBD52237071DD002E31DF /* GoulashSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD51237071DD002E31DF /* GoulashSplitViewController.swift */; };
+		C1EEBD54237071FE002E31DF /* GoulashNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD53237071FE002E31DF /* GoulashNavigationController.swift */; };
+		C1EEBD5623707235002E31DF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD5523707235002E31DF /* DetailViewController.swift */; };
+		C1EEBD58237075E2002E31DF /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD57237075E2002E31DF /* UIView+Layout.swift */; };
+		C1EEBD5B23707628002E31DF /* LayoutSpecifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD5A23707628002E31DF /* LayoutSpecifier.swift */; };
+		C1EEBD5E23707B70002E31DF /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD5D23707B70002E31DF /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C1178814236ADC24005FC9C0 /* GoulashClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoulashClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1178817236ADC24005FC9C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C1178819236ADC24005FC9C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C1178819236ADC24005FC9C0 /* DefaultSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSceneDelegate.swift; sourceTree = "<group>"; };
 		C1178820236ADC28005FC9C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1178825236ADC28005FC9C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1178832236ADE9B005FC9C0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C133368E23716B7200CD5247 /* DefaultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCoordinator.swift; sourceTree = "<group>"; };
 		C192743B23705C5100A81743 /* UIViewController+ConvenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ConvenienceInit.swift"; sourceTree = "<group>"; };
 		C19CCAA8236ADF920011B111 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		C19CCAAB236AEB8B0011B111 /* GoulashClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoulashClub.entitlements; sourceTree = "<group>"; };
 		C1EEBD4D237070D0002E31DF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C1EEBD51237071DD002E31DF /* GoulashSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoulashSplitViewController.swift; sourceTree = "<group>"; };
+		C1EEBD53237071FE002E31DF /* GoulashNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoulashNavigationController.swift; sourceTree = "<group>"; };
+		C1EEBD5523707235002E31DF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C1EEBD57237075E2002E31DF /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		C1EEBD5A23707628002E31DF /* LayoutSpecifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSpecifier.swift; sourceTree = "<group>"; };
+		C1EEBD5D23707B70002E31DF /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,13 +73,14 @@
 		C1178816236ADC24005FC9C0 /* GoulashClub */ = {
 			isa = PBXGroup;
 			children = (
+				C1EEBD5C23707B5F002E31DF /* Coordinators */,
 				C192743923705C2E00A81743 /* Utils */,
 				C117882E236ADD9A005FC9C0 /* Views */,
 				C117882B236ADC9D005FC9C0 /* Scenes */,
 				C19CCAAA236AE9BC0011B111 /* Resources */,
 				C117882D236ADD78005FC9C0 /* SupportingFiles */,
 				C1178817236ADC24005FC9C0 /* AppDelegate.swift */,
-				C1178819236ADC24005FC9C0 /* SceneDelegate.swift */,
+				C1178819236ADC24005FC9C0 /* DefaultSceneDelegate.swift */,
 			);
 			path = GoulashClub;
 			sourceTree = "<group>";
@@ -73,7 +88,9 @@
 		C117882B236ADC9D005FC9C0 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C1EEBD4F237071B9002E31DF /* Detail */,
 				C117882C236ADCB1005FC9C0 /* Places */,
+				C1EEBD50237071C1002E31DF /* Shared */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -116,6 +133,7 @@
 			children = (
 				C1EEBD4C237070A9002E31DF /* Configs */,
 				C192743A23705C3500A81743 /* Extensions */,
+				C1EEBD5923707613002E31DF /* Protocols */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -124,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				C192743B23705C5100A81743 /* UIViewController+ConvenienceInit.swift */,
+				C1EEBD57237075E2002E31DF /* UIView+Layout.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -142,6 +161,40 @@
 				C1EEBD4D237070D0002E31DF /* Constants.swift */,
 			);
 			path = Configs;
+			sourceTree = "<group>";
+		};
+		C1EEBD4F237071B9002E31DF /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C1EEBD5523707235002E31DF /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		C1EEBD50237071C1002E31DF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C1EEBD51237071DD002E31DF /* GoulashSplitViewController.swift */,
+				C1EEBD53237071FE002E31DF /* GoulashNavigationController.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		C1EEBD5923707613002E31DF /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C1EEBD5A23707628002E31DF /* LayoutSpecifier.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		C1EEBD5C23707B5F002E31DF /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				C1EEBD5D23707B70002E31DF /* AppCoordinator.swift */,
+				C133368E23716B7200CD5247 /* DefaultCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,11 +266,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1EEBD5E23707B70002E31DF /* AppCoordinator.swift in Sources */,
+				C133368F23716B7200CD5247 /* DefaultCoordinator.swift in Sources */,
 				C1EEBD4E237070D0002E31DF /* Constants.swift in Sources */,
 				C19CCAA9236ADF920011B111 /* PlacesViewController.swift in Sources */,
+				C1EEBD5B23707628002E31DF /* LayoutSpecifier.swift in Sources */,
+				C1EEBD52237071DD002E31DF /* GoulashSplitViewController.swift in Sources */,
 				C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */,
 				C192743C23705C5100A81743 /* UIViewController+ConvenienceInit.swift in Sources */,
-				C117881A236ADC24005FC9C0 /* SceneDelegate.swift in Sources */,
+				C1EEBD58237075E2002E31DF /* UIView+Layout.swift in Sources */,
+				C1EEBD54237071FE002E31DF /* GoulashNavigationController.swift in Sources */,
+				C117881A236ADC24005FC9C0 /* DefaultSceneDelegate.swift in Sources */,
+				C1EEBD5623707235002E31DF /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,15 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Coordinator for iOS 12 and sooner
     private var defaultCoordinator: DefaultCoordinator?
     
+    var manager: FirebaseManager!
+    
     // MARK: App Lifecycle Methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         #if targetEnvironment(macCatalyst)
-        let url = Bundle.main.path(forResource: "GoogleService-Mac", ofType: "plist")!
-        let options = FirebaseOptions(contentsOfFile: url)!
+        guard let url = Bundle.main.path(forResource: "GoogleService-Mac", ofType: "plist"),
+            let options = FirebaseOptions(contentsOfFile: url) else {
+                fatalError("Can't configure Firebase")
+        }
         FirebaseApp.configure(options: options)
         #else
-        let url = Bundle.main.path(forResource: "GoogleService-iOS", ofType: "plist")!
-        let options = FirebaseOptions(contentsOfFile: url)!
+        guard let url = Bundle.main.path(forResource: "GoogleService-iOS", ofType: "plist"),
+            let options = FirebaseOptions(contentsOfFile: url) else {
+                fatalError("Can't configure Firebase")
+        }
         FirebaseApp.configure(options: options)
         #endif
 
@@ -39,6 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.window = window
         }
+        
+        manager = FirebaseManager()
+        manager.startListeningToPlaces()
         
         return true
     }

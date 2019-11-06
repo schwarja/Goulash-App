@@ -15,6 +15,9 @@
 		C133368F23716B7200CD5247 /* DefaultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C133368E23716B7200CD5247 /* DefaultCoordinator.swift */; };
 		C13336952371EEF200CD5247 /* GoogleService-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = C13336942371EEF200CD5247 /* GoogleService-iOS.plist */; };
 		C13336972371EEFC00CD5247 /* GoogleService-Mac.plist in Resources */ = {isa = PBXBuildFile; fileRef = C13336962371EEFC00CD5247 /* GoogleService-Mac.plist */; };
+		C133369D2372EA1100CD5247 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C133369C2372EA1100CD5247 /* FirebaseManager.swift */; };
+		C13336A02372EA9900CD5247 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = C133369F2372EA9900CD5247 /* Place.swift */; };
+		C13336A22372EB0400CD5247 /* DataStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13336A12372EB0400CD5247 /* DataStatus.swift */; };
 		C192743C23705C5100A81743 /* UIViewController+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192743B23705C5100A81743 /* UIViewController+ConvenienceInit.swift */; };
 		C19CCAA9236ADF920011B111 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19CCAA8236ADF920011B111 /* PlacesViewController.swift */; };
 		C1EEBD4E237070D0002E31DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD4D237070D0002E31DF /* Constants.swift */; };
@@ -38,6 +41,9 @@
 		C133368E23716B7200CD5247 /* DefaultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCoordinator.swift; sourceTree = "<group>"; };
 		C13336942371EEF200CD5247 /* GoogleService-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-iOS.plist"; sourceTree = "<group>"; };
 		C13336962371EEFC00CD5247 /* GoogleService-Mac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Mac.plist"; sourceTree = "<group>"; };
+		C133369C2372EA1100CD5247 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		C133369F2372EA9900CD5247 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		C13336A12372EB0400CD5247 /* DataStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStatus.swift; sourceTree = "<group>"; };
 		C192743B23705C5100A81743 /* UIViewController+ConvenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ConvenienceInit.swift"; sourceTree = "<group>"; };
 		C19CCAA8236ADF920011B111 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		C19CCAAB236AEB8B0011B111 /* GoulashClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoulashClub.entitlements; sourceTree = "<group>"; };
@@ -101,6 +107,7 @@
 		C1178816236ADC24005FC9C0 /* GoulashClub */ = {
 			isa = PBXGroup;
 			children = (
+				C133369E2372EA8D00CD5247 /* Models */,
 				C1EEBD5C23707B5F002E31DF /* Coordinators */,
 				C192743923705C2E00A81743 /* Utils */,
 				C117882E236ADD9A005FC9C0 /* Views */,
@@ -166,9 +173,27 @@
 			path = GoogleService;
 			sourceTree = "<group>";
 		};
+		C133369B2372E9F900CD5247 /* Manag */ = {
+			isa = PBXGroup;
+			children = (
+				C133369C2372EA1100CD5247 /* FirebaseManager.swift */,
+				C13336A12372EB0400CD5247 /* DataStatus.swift */,
+			);
+			path = Manag;
+			sourceTree = "<group>";
+		};
+		C133369E2372EA8D00CD5247 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C133369F2372EA9900CD5247 /* Place.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C192743923705C2E00A81743 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C133369B2372E9F900CD5247 /* Manag */,
 				C1EEBD4C237070A9002E31DF /* Configs */,
 				C192743A23705C3500A81743 /* Extensions */,
 				C1EEBD5923707613002E31DF /* Protocols */,
@@ -369,16 +394,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C133369D2372EA1100CD5247 /* FirebaseManager.swift in Sources */,
 				C1EEBD5E23707B70002E31DF /* AppCoordinator.swift in Sources */,
 				C133368F23716B7200CD5247 /* DefaultCoordinator.swift in Sources */,
 				C1EEBD4E237070D0002E31DF /* Constants.swift in Sources */,
 				C19CCAA9236ADF920011B111 /* PlacesViewController.swift in Sources */,
+				C13336A02372EA9900CD5247 /* Place.swift in Sources */,
 				C1EEBD5B23707628002E31DF /* LayoutSpecifier.swift in Sources */,
 				C1EEBD52237071DD002E31DF /* GoulashSplitViewController.swift in Sources */,
 				C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */,
 				C192743C23705C5100A81743 /* UIViewController+ConvenienceInit.swift in Sources */,
 				C1EEBD58237075E2002E31DF /* UIView+Layout.swift in Sources */,
 				C1EEBD54237071FE002E31DF /* GoulashNavigationController.swift in Sources */,
+				C13336A22372EB0400CD5247 /* DataStatus.swift in Sources */,
 				C117881A236ADC24005FC9C0 /* DefaultSceneDelegate.swift in Sources */,
 				C1EEBD5623707235002E31DF /* DetailViewController.swift in Sources */,
 			);

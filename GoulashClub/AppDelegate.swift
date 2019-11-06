@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: App Lifecycle Methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        #if targetEnvironment(macCatalyst)
+        let url = Bundle.main.path(forResource: "GoogleService-Mac", ofType: "plist")!
+        let options = FirebaseOptions(contentsOfFile: url)!
+        FirebaseApp.configure(options: options)
+        #else
+        let url = Bundle.main.path(forResource: "GoogleService-iOS", ofType: "plist")!
+        let options = FirebaseOptions(contentsOfFile: url)!
+        FirebaseApp.configure(options: options)
+        #endif
+
         self.coordinator = AppCoordinator()
         
         if #available(iOS 13.0, *) {} else {

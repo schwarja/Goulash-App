@@ -8,4 +8,5 @@ target 'GoulashClub' do
 
   # Pods for GoulashClub
   pod 'SwiftLint'
+  pod 'Firebase/Firestore'
 end

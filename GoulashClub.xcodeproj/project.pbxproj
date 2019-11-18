@@ -18,8 +18,21 @@
 		C133369D2372EA1100CD5247 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C133369C2372EA1100CD5247 /* FirebaseManager.swift */; };
 		C13336A02372EA9900CD5247 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = C133369F2372EA9900CD5247 /* Place.swift */; };
 		C13336A22372EB0400CD5247 /* DataStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13336A12372EB0400CD5247 /* DataStatus.swift */; };
+		C17E947D23829065007315DF /* WRO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17E947C23829065007315DF /* WRO.swift */; };
+		C17E94802382A44B007315DF /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17E947F2382A44B007315DF /* AppDependency.swift */; };
+		C17E94822382A483007315DF /* AppDependencable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17E94812382A483007315DF /* AppDependencable.swift */; };
+		C17E94842382A5E7007315DF /* Coordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17E94832382A5E7007315DF /* Coordinating.swift */; };
+		C17E94862382A87C007315DF /* PlacesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17E94852382A87C007315DF /* PlacesViewModel.swift */; };
+		C17E94882382AA10007315DF /* UIWidowSceneDelegate+AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17E94872382AA10007315DF /* UIWidowSceneDelegate+AppCoordinator.swift */; };
+		C17E948B2382AD9E007315DF /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17E948A2382AD9E007315DF /* PlaceCell.swift */; };
+		C17E948D2382AE1D007315DF /* UITableView+RegistrationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17E948C2382AE1D007315DF /* UITableView+RegistrationHelpers.swift */; };
+		C17E94902382AE45007315DF /* NibNameIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17E948E2382AE44007315DF /* NibNameIdentifiable.swift */; };
+		C17E94932382AFC8007315DF /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17E94922382AFC8007315DF /* DatabaseError.swift */; };
+		C17E94952382B0AC007315DF /* JSONDecoder+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17E94942382B0AC007315DF /* JSONDecoder+Firebase.swift */; };
 		C192743C23705C5100A81743 /* UIViewController+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192743B23705C5100A81743 /* UIViewController+ConvenienceInit.swift */; };
 		C19CCAA9236ADF920011B111 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19CCAA8236ADF920011B111 /* PlacesViewController.swift */; };
+		C1C84016237F1048001D6340 /* DatabaseManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C84015237F1048001D6340 /* DatabaseManaging.swift */; };
+		C1C84018237F1068001D6340 /* DatabaseListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C84017237F1068001D6340 /* DatabaseListener.swift */; };
 		C1EEBD4E237070D0002E31DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD4D237070D0002E31DF /* Constants.swift */; };
 		C1EEBD52237071DD002E31DF /* GoulashSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD51237071DD002E31DF /* GoulashSplitViewController.swift */; };
 		C1EEBD54237071FE002E31DF /* GoulashNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EEBD53237071FE002E31DF /* GoulashNavigationController.swift */; };
@@ -44,9 +57,22 @@
 		C133369C2372EA1100CD5247 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		C133369F2372EA9900CD5247 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		C13336A12372EB0400CD5247 /* DataStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStatus.swift; sourceTree = "<group>"; };
+		C17E947C23829065007315DF /* WRO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRO.swift; sourceTree = "<group>"; };
+		C17E947F2382A44B007315DF /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		C17E94812382A483007315DF /* AppDependencable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencable.swift; sourceTree = "<group>"; };
+		C17E94832382A5E7007315DF /* Coordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinating.swift; sourceTree = "<group>"; };
+		C17E94852382A87C007315DF /* PlacesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewModel.swift; sourceTree = "<group>"; };
+		C17E94872382AA10007315DF /* UIWidowSceneDelegate+AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWidowSceneDelegate+AppCoordinator.swift"; sourceTree = "<group>"; };
+		C17E948A2382AD9E007315DF /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
+		C17E948C2382AE1D007315DF /* UITableView+RegistrationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+RegistrationHelpers.swift"; sourceTree = "<group>"; };
+		C17E948E2382AE44007315DF /* NibNameIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibNameIdentifiable.swift; sourceTree = "<group>"; };
+		C17E94922382AFC8007315DF /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
+		C17E94942382B0AC007315DF /* JSONDecoder+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Firebase.swift"; sourceTree = "<group>"; };
 		C192743B23705C5100A81743 /* UIViewController+ConvenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ConvenienceInit.swift"; sourceTree = "<group>"; };
 		C19CCAA8236ADF920011B111 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		C19CCAAB236AEB8B0011B111 /* GoulashClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoulashClub.entitlements; sourceTree = "<group>"; };
+		C1C84015237F1048001D6340 /* DatabaseManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManaging.swift; sourceTree = "<group>"; };
+		C1C84017237F1068001D6340 /* DatabaseListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseListener.swift; sourceTree = "<group>"; };
 		C1EEBD4D237070D0002E31DF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C1EEBD51237071DD002E31DF /* GoulashSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoulashSplitViewController.swift; sourceTree = "<group>"; };
 		C1EEBD53237071FE002E31DF /* GoulashNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoulashNavigationController.swift; sourceTree = "<group>"; };
@@ -107,6 +133,7 @@
 		C1178816236ADC24005FC9C0 /* GoulashClub */ = {
 			isa = PBXGroup;
 			children = (
+				C17E947E2382A435007315DF /* DependencyInjection */,
 				C133369E2372EA8D00CD5247 /* Models */,
 				C1EEBD5C23707B5F002E31DF /* Coordinators */,
 				C192743923705C2E00A81743 /* Utils */,
@@ -134,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				C19CCAA8236ADF920011B111 /* PlacesViewController.swift */,
+				C17E94852382A87C007315DF /* PlacesViewModel.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -151,6 +179,7 @@
 		C117882E236ADD9A005FC9C0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C17E94892382AD8B007315DF /* Places */,
 				C117882F236ADDA1005FC9C0 /* LaunchScreen */,
 			);
 			path = Views;
@@ -186,13 +215,40 @@
 			isa = PBXGroup;
 			children = (
 				C133369F2372EA9900CD5247 /* Place.swift */,
+				C17E94922382AFC8007315DF /* DatabaseError.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C17E947B23829052007315DF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C17E947C23829065007315DF /* WRO.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C17E947E2382A435007315DF /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				C17E947F2382A44B007315DF /* AppDependency.swift */,
+				C17E94812382A483007315DF /* AppDependencable.swift */,
+			);
+			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		C17E94892382AD8B007315DF /* Places */ = {
+			isa = PBXGroup;
+			children = (
+				C17E948A2382AD9E007315DF /* PlaceCell.swift */,
+			);
+			path = Places;
 			sourceTree = "<group>";
 		};
 		C192743923705C2E00A81743 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C17E947B23829052007315DF /* Helpers */,
 				C133369B2372E9F900CD5247 /* Manag */,
 				C1EEBD4C237070A9002E31DF /* Configs */,
 				C192743A23705C3500A81743 /* Extensions */,
@@ -204,8 +260,12 @@
 		C192743A23705C3500A81743 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C17E948E2382AE44007315DF /* NibNameIdentifiable.swift */,
+				C17E948C2382AE1D007315DF /* UITableView+RegistrationHelpers.swift */,
 				C192743B23705C5100A81743 /* UIViewController+ConvenienceInit.swift */,
 				C1EEBD57237075E2002E31DF /* UIView+Layout.swift */,
+				C17E94872382AA10007315DF /* UIWidowSceneDelegate+AppCoordinator.swift */,
+				C17E94942382B0AC007315DF /* JSONDecoder+Firebase.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -247,6 +307,9 @@
 			isa = PBXGroup;
 			children = (
 				C1EEBD5A23707628002E31DF /* LayoutSpecifier.swift */,
+				C1C84015237F1048001D6340 /* DatabaseManaging.swift */,
+				C1C84017237F1068001D6340 /* DatabaseListener.swift */,
+				C17E94832382A5E7007315DF /* Coordinating.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -394,21 +457,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C17E94822382A483007315DF /* AppDependencable.swift in Sources */,
+				C17E94842382A5E7007315DF /* Coordinating.swift in Sources */,
+				C17E947D23829065007315DF /* WRO.swift in Sources */,
 				C133369D2372EA1100CD5247 /* FirebaseManager.swift in Sources */,
 				C1EEBD5E23707B70002E31DF /* AppCoordinator.swift in Sources */,
+				C17E94932382AFC8007315DF /* DatabaseError.swift in Sources */,
 				C133368F23716B7200CD5247 /* DefaultCoordinator.swift in Sources */,
+				C17E94862382A87C007315DF /* PlacesViewModel.swift in Sources */,
 				C1EEBD4E237070D0002E31DF /* Constants.swift in Sources */,
+				C17E94802382A44B007315DF /* AppDependency.swift in Sources */,
 				C19CCAA9236ADF920011B111 /* PlacesViewController.swift in Sources */,
 				C13336A02372EA9900CD5247 /* Place.swift in Sources */,
 				C1EEBD5B23707628002E31DF /* LayoutSpecifier.swift in Sources */,
+				C17E94952382B0AC007315DF /* JSONDecoder+Firebase.swift in Sources */,
+				C17E94882382AA10007315DF /* UIWidowSceneDelegate+AppCoordinator.swift in Sources */,
 				C1EEBD52237071DD002E31DF /* GoulashSplitViewController.swift in Sources */,
+				C17E94902382AE45007315DF /* NibNameIdentifiable.swift in Sources */,
+				C1C84016237F1048001D6340 /* DatabaseManaging.swift in Sources */,
 				C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */,
+				C1C84018237F1068001D6340 /* DatabaseListener.swift in Sources */,
 				C192743C23705C5100A81743 /* UIViewController+ConvenienceInit.swift in Sources */,
 				C1EEBD58237075E2002E31DF /* UIView+Layout.swift in Sources */,
 				C1EEBD54237071FE002E31DF /* GoulashNavigationController.swift in Sources */,
 				C13336A22372EB0400CD5247 /* DataStatus.swift in Sources */,
+				C17E948D2382AE1D007315DF /* UITableView+RegistrationHelpers.swift in Sources */,
 				C117881A236ADC24005FC9C0 /* DefaultSceneDelegate.swift in Sources */,
 				C1EEBD5623707235002E31DF /* DetailViewController.swift in Sources */,
+				C17E948B2382AD9E007315DF /* PlaceCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

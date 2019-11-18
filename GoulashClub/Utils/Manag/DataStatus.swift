@@ -8,9 +8,9 @@
 
 import Foundation
 
-enum DataStatus<T, E> {
-    case initialized
+enum DataStatus<T> {
+    case initial
     case loading
-    case error(error: E)
+    case error(error: Error)
     case ready(data: T)
 }

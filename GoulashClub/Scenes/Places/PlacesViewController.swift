@@ -9,10 +9,17 @@
 import UIKit
 
 class PlacesViewController: UIViewController {
+    // swiftlint:disable:next implicitly_unwrapped_optional
     private var tableView: UITableView!
     
-    init() {
+    private let viewModel: PlacesViewModel
+    
+    init(viewModel: PlacesViewModel) {
+        self.viewModel = viewModel
+        
         super.init(nibName: nil, bundle: nil)
+        
+        viewModel.delegate = self
     }
 
     override func viewDidLoad() {
@@ -22,11 +29,41 @@ class PlacesViewController: UIViewController {
     }
 }
 
+// MARK: Table View Data Source
+extension PlacesViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfItems()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: PlaceCell = tableView.dequeueReusableCell(for: indexPath)
+        
+        let item = viewModel.item(at: indexPath.row)
+        cell.textLabel?.text = item.name
+        
+        return cell
+    }
+}
+
+// MARK: View Model Delegate
+extension PlacesViewController: PlacesViewModelDelegate {
+    func didUpdateStatus(previous: DataStatus<[Place]>, new: DataStatus<[Place]>) {
+        tableView.reloadData()
+    }
+}
+
 // MARK: Private methods
 private extension PlacesViewController {
     func setup() {
         tableView = UITableView(frame: .zero, style: .plain)
         view.addSubview(tableView)
         tableView.attachToSuperview(useSafeArea: false)
+        
+        tableView.register(type: PlaceCell.self)
+        tableView.dataSource = self
     }
 }

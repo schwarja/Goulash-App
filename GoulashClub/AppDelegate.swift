@@ -13,41 +13,22 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
-    private var coordinator: AppCoordinator!
-    // MARK: Coordinator for iOS 12 and sooner
-    private var defaultCoordinator: DefaultCoordinator?
-    
-    var manager: FirebaseManager!
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    private(set) var coordinator: AppCoordinator!
     
     // MARK: App Lifecycle Methods
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        #if targetEnvironment(macCatalyst)
-        guard let url = Bundle.main.path(forResource: "GoogleService-Mac", ofType: "plist"),
-            let options = FirebaseOptions(contentsOfFile: url) else {
-                fatalError("Can't configure Firebase")
-        }
-        FirebaseApp.configure(options: options)
-        #else
-        guard let url = Bundle.main.path(forResource: "GoogleService-iOS", ofType: "plist"),
-            let options = FirebaseOptions(contentsOfFile: url) else {
-                fatalError("Can't configure Firebase")
-        }
-        FirebaseApp.configure(options: options)
-        #endif
-
+        configureFirebase()
+        
         self.coordinator = AppCoordinator()
         
         if #available(iOS 13.0, *) {} else {
             let window = UIWindow(frame: UIScreen.main.bounds)
             
-            defaultCoordinator = DefaultCoordinator(window: window)
-            defaultCoordinator?.start()
+            self.coordinator.startDefaultScene(with: window)
             
             self.window = window
         }
-        
-        manager = FirebaseManager()
-        manager.startListeningToPlaces()
         
         return true
     }
@@ -93,5 +74,15 @@ extension AppDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+}
+
+// MARK: Private methods
+private extension AppDelegate {
+    func configureFirebase() {
+        guard let options = FirebaseOptions(contentsOfFile: Constants.Firebase.configUrl) else {
+            fatalError("Can't configure Firebase")
+        }
+        FirebaseApp.configure(options: options)
     }
 }

@@ -12,4 +12,15 @@ enum Constants {
     enum Scenes {
         static let `default` = "DefaultSceneConfiguration"
     }
+    
+    enum Firebase {
+        #if targetEnvironment(macCatalyst)
+        // swiftlint:disable:next force_unwrapping
+        static let configUrl = Bundle.main.path(forResource: "GoogleService-Mac", ofType: "plist")!
+        #else
+        // swiftlint:disable:next force_unwrapping
+        static let configUrl = Bundle.main.path(forResource: "GoogleService-iOS", ofType: "plist")!
+        #endif
+        static let defaultIdAttributeName = "id"
+    }
 }

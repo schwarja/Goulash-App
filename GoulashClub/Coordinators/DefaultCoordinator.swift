@@ -8,17 +8,22 @@
 
 import UIKit
 
-class DefaultCoordinator {
+class DefaultCoordinator: Coordinating {
     private var window: UIWindow
+    private let dependencies: AppDependencable
     
-    init(window: UIWindow) {
+    private(set) var childCoordinators: [Coordinating] = []
+
+    init(window: UIWindow, dependencies: AppDependencable) {
         self.window = window
+        self.dependencies = dependencies
     }
     
     func start() {
         let split = GoulashSplitViewController()
         
-        let list = PlacesViewController()
+        let viewModel = PlacesViewModel(database: dependencies.databaseManager)
+        let list = PlacesViewController(viewModel: viewModel)
         let listNavigation = GoulashNavigationController(rootViewController: list)
         
         let detail = DetailViewController()

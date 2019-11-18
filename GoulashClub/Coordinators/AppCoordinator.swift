@@ -8,5 +8,23 @@
 
 import UIKit
 
-class AppCoordinator {
+class AppCoordinator: Coordinating {
+    let dependencies: AppDependencable
+    
+    private(set) var childCoordinators: [Coordinating] = []
+    
+    init() {
+        dependencies = AppDependency()
+    }
+    
+    func start() {
+        
+    }
+    
+    func startDefaultScene(with window: UIWindow) {
+        let defaultCoordinator = DefaultCoordinator(window: window, dependencies: dependencies)
+        childCoordinators.append(defaultCoordinator)
+        
+        defaultCoordinator.start()
+    }
 }

@@ -1,15 +1,15 @@
 #
-# SwiftLint configuration file commonly used in STRV (v 0.1.3)
+# SwiftLint configuration file commonly used in STRV (v 0.1.2)
 #
 # Feel free to send pull request or suggest improvements!
-#
+# 
+
 
 #
 # Rule identifiers to exclude from running.
 #
 disabled_rules:
-  - trailing_whitespace
-  - implicitly_unwrapped_optional
+
 #
 # Some rules are only opt-in. Find all the available rules by running: swiftlint rules
 #
@@ -35,7 +35,8 @@ opt_in_rules:
   - unavailable_function
   - strict_fileprivate
   - explicit_init
-  - anyobject_protocol
+  - redundant_objc_attribute
+  - unowned_variable_capture
 
 #
 # Paths to include during linting. `--path` is ignored if present.
@@ -61,44 +62,39 @@ excluded:
 vertical_whitespace:
   max_empty_lines: 2
 
-  force_cast: error
+force_cast: error
 
-  identifier_name:
-    excluded:
-      - id
+identifier_name:
+  excluded:
+    - id
 
-  empty_count: warning
+empty_count: warning
 
-  trailing_whitespace:
-    ignores_empty_lines: yes
-
-    line_length:
-      ignores_function_declarations: yes
-      ignores_comments: yes
-      ignores_urls: yes
-      error: 300
-      warning: 200
+trailing_whitespace:
+  ignores_empty_lines: true
 
 line_length:
-    error: 300
-    warning: 200
+  ignores_function_declarations: true
+  ignores_comments: true
+  ignores_urls: true
+  error: 300
+  warning: 200
 
 function_body_length:
-    error: 150
-    warning: 100
+  error: 150
+  warning: 100
 
 type_body_length:
-    error: 900
-    warning: 600
+  error: 900
+  warning: 600
 
 file_length:
-    error: 1000
-    warning: 700
+  error: 1000
+  warning: 700
 
 
 # Custom rules definitions
 custom_rules:
-
   comments_space: # From https://github.com/brandenr/swiftlintconfig
     name: "Space After Comment"
     regex: "(^ *//\\w+)"
@@ -119,13 +115,3 @@ custom_rules:
     message: "Double space between keywords"
     match_kinds: keyword
     severity: warning
-
-  no_negated_isEmpty:
-      included: ".*\\.swift"
-      excluded: ".*Test\\.swift"
-      name: "Negated isEmpty"
-      regex: (![(\w+\.)+]+isEmpty)
-      severity: error
-      message: "Use .isNotEmpty"
-      match_kinds:
-        - identifier

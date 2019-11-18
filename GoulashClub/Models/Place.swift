@@ -8,4 +8,7 @@
 
 import Foundation
 
-struct Place {}
+struct Place: Decodable {
+    let id: String
+    let name: String
+}

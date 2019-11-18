@@ -11,8 +11,6 @@ import UIKit
 @available(iOS 13.0, *)
 class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    
-    private var coordinator: DefaultCoordinator!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else {
@@ -21,8 +19,7 @@ class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
                 
-        self.coordinator = DefaultCoordinator(window: window)
-        self.coordinator.start()
+        appCoordinator.startDefaultScene(with: window)
 
         self.window = window
     }

@@ -13,13 +13,13 @@ class PlacesViewController: UIViewController {
     private var tableView: UITableView!
     
     private let viewModel: PlacesViewModel
+    private weak var coordinator: DefaultCoordinator?
     
-    init(viewModel: PlacesViewModel) {
+    init(viewModel: PlacesViewModel, coordinator: DefaultCoordinator) {
         self.viewModel = viewModel
+        self.coordinator = coordinator
         
         super.init(nibName: nil, bundle: nil)
-        
-        viewModel.delegate = self
     }
 
     override func viewDidLoad() {
@@ -49,6 +49,15 @@ extension PlacesViewController: UITableViewDataSource {
     }
 }
 
+// MARK: Table View Delegate
+extension PlacesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = viewModel.item(at: indexPath.row)
+        
+        coordinator?.didSelect(place: item, in: self)
+    }
+}
+
 // MARK: View Model Delegate
 extension PlacesViewController: PlacesViewModelDelegate {
     func didUpdateStatus(previous: DataStatus<[Place]>, new: DataStatus<[Place]>) {
@@ -59,11 +68,18 @@ extension PlacesViewController: PlacesViewModelDelegate {
 // MARK: Private methods
 private extension PlacesViewController {
     func setup() {
+        viewModel.delegate = self
+
+        setupUI()
+    }
+    
+    func setupUI() {
         tableView = UITableView(frame: .zero, style: .plain)
         view.addSubview(tableView)
         tableView.attachToSuperview(useSafeArea: false)
         
         tableView.register(type: PlaceCell.self)
         tableView.dataSource = self
+        tableView.delegate = self
     }
 }

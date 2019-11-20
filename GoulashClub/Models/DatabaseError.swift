@@ -11,5 +11,6 @@ import Foundation
 enum DatabaseError: Error {
     case serialization(error: Error)
     case `internal`(error: Error)
+    case notExist
     case unknown
 }

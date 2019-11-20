@@ -9,7 +9,7 @@
 import Foundation
 
 class WRO<T: AnyObject> where T: Hashable {
-    weak var object: T?
+    private(set) weak var object: T?
     
     init(object: T) {
         self.object = object

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Jan Schwarz. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol Coordinating {
     var childCoordinators: [Coordinating] { get }

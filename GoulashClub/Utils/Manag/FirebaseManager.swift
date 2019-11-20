@@ -14,6 +14,13 @@ class FirebaseManager {
         case places
     }
     
+    enum ChangeType {
+        case added
+        case modified
+        case deleted
+    }
+    typealias PlaceChange = (type: ChangeType, placeId: String, index: Int)
+    
     let database = Firestore.firestore()
     let decoder = JSONDecoder()
     
@@ -23,12 +30,12 @@ class FirebaseManager {
         }
     }
     
-    private var placesListeners: Set<WRO<NSObject>> = [] {
+    private var placesListeners: [WRO<NSObject>] = [] {
         didSet {
             listenersUpdated()
         }
     }
-    private var placeListeners: [String: Set<WRO<NSObject>>] = [:] {
+    private var placeListeners: [String: [WRO<NSObject>]] = [:] {
         didSet {
             listenersUpdated()
         }
@@ -39,15 +46,19 @@ class FirebaseManager {
 // MARK: Database Managing
 extension FirebaseManager: DatabaseManaging {
     func register<Listener>(placesListener: Listener) where Listener: NSObject, Listener: PlacesDatabaseListener {
+        clearReleasedListeners()
         let wro = WRO<NSObject>(object: placesListener)
-        placesListeners.insert(wro)
+        placesListeners.append(wro)
+        inform(placesListener: wro)
     }
     
     func register<Listener>(placeListener: Listener, for id: String) where Listener: NSObject, Listener: PlaceDatabaseListener {
+        clearReleasedListeners()
         let wro = WRO<NSObject>(object: placeListener)
-        var listeners = placeListeners[id] ?? Set<WRO<NSObject>>()
-        listeners.insert(wro)
+        var listeners = placeListeners[id] ?? [WRO<NSObject>]()
+        listeners.append(wro)
         placeListeners[id] = listeners
+        inform(placeListener: wro, placeId: id)
     }
 }
 
@@ -66,11 +77,10 @@ private extension FirebaseManager {
             return
         }
         
-        self.places = .loading
         placesListenerRegistration = database.collection(Path.places.rawValue).addSnapshotListener(includeMetadataChanges: false) { [weak self] (snapshot, error) in
             if let snapshot = snapshot, let self = self {
                 do {
-                    let places: [Place] = try self.decoder.decode(snapshot: snapshot)
+                    let places = try self.deserialize(snapshot: snapshot)
                     self.places = .ready(data: places)
                 } catch {
                     self.places = .error(error: DatabaseError.serialization(error: error))
@@ -81,17 +91,79 @@ private extension FirebaseManager {
                 self?.places = .error(error: DatabaseError.unknown)
             }
         }
+        
+        self.places = .loading
     }
     
     func stopListeningToPlaces() {
         placesListenerRegistration?.remove()
     }
     
+    func deserialize(snapshot: QuerySnapshot) throws -> [Place] {
+        let newPlaces: [Place]
+        if case .ready(var places) = self.places {
+            for change in snapshot.documentChanges {
+                switch change.type {
+                case .added:
+                    let place: Place = try self.decoder.decode(document: change.document)
+                    places.insert(place, at: Int(change.newIndex))
+                case .modified:
+                    places.remove(at: Int(change.oldIndex))
+                    let place: Place = try self.decoder.decode(document: change.document)
+                    places.insert(place, at: Int(change.newIndex))
+                case .removed:
+                    places.remove(at: Int(change.oldIndex))
+                }
+            }
+            newPlaces = places
+        } else {
+            newPlaces = try decoder.decode(snapshot: snapshot)
+        }
+        return newPlaces
+    }
+    
     func informListeners() {
         for wro in placesListeners {
-            if let listener = wro.object as? PlacesDatabaseListener {
-                listener.didUpdatePlaces(places)
+            inform(placesListener: wro)
+        }
+        
+        for (identifier, listeners) in placeListeners {
+            for wro in listeners {
+                inform(placeListener: wro, placeId: identifier)
             }
+        }
+    }
+    
+    func inform(placesListener: WRO<NSObject>) {
+        if let listener = placesListener.object as? PlacesDatabaseListener {
+            listener.didUpdatePlaces(places)
+        }
+    }
+    
+    func inform(placeListener: WRO<NSObject>, placeId: String) {
+        if let listener = placeListener.object as? PlaceDatabaseListener {
+            switch places {
+            case .initial:
+                listener.didUpdatePlace(with: placeId, place: .initial)
+            case .loading:
+                listener.didUpdatePlace(with: placeId, place: .loading)
+            case .error(let error):
+                listener.didUpdatePlace(with: placeId, place: .error(error: error))
+            case .ready(let places):
+                if let place = places.first(where: { $0.id == placeId }) {
+                    listener.didUpdatePlace(with: placeId, place: .ready(data: place))
+                } else {
+                    listener.didUpdatePlace(with: placeId, place: .error(error: DatabaseError.notExist))
+                }
+            }
+        }
+    }
+    
+    func clearReleasedListeners() {
+        placesListeners = placesListeners.filter({ $0.object != nil })
+        for (identifier, listeners) in placeListeners {
+            let newListeners = listeners.filter({ $0.object != nil })
+            placeListeners[identifier] = newListeners
         }
     }
 }

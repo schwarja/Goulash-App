@@ -8,7 +8,15 @@
 
 import UIKit
 
-class DefaultCoordinator: Coordinating {
+class DefaultCoordinator: NSObject, Coordinating {
+    let splitViewController = GoulashSplitViewController()
+    private lazy var masterViewController: GoulashNavigationController = {
+        let viewModel = PlacesViewModel(database: dependencies.databaseManager)
+        let list = PlacesViewController(viewModel: viewModel, coordinator: self)
+        let listNavigation = GoulashNavigationController(rootViewController: list)
+        return listNavigation
+    }()
+    
     private var window: UIWindow
     private let dependencies: AppDependencable
     
@@ -20,18 +28,38 @@ class DefaultCoordinator: Coordinating {
     }
     
     func start() {
-        let split = GoulashSplitViewController()
+        dependencies.databaseManager.register(placesListener: self)
         
-        let viewModel = PlacesViewModel(database: dependencies.databaseManager)
-        let list = PlacesViewController(viewModel: viewModel)
-        let listNavigation = GoulashNavigationController(rootViewController: list)
+        splitViewController.viewControllers = [masterViewController]
         
-        let detail = DetailViewController()
-        let detailNavigation = GoulashNavigationController(rootViewController: detail)
-        
-        split.viewControllers = [listNavigation, detailNavigation]
-        
-        window.rootViewController = split
+        window.rootViewController = splitViewController
         window.makeKeyAndVisible()
+    }
+}
+
+// MARK: Places listener
+extension DefaultCoordinator: PlacesDatabaseListener {
+    func didUpdatePlaces(_ places: DataStatus<[Place]>) {
+        if case .ready(let places) = places, splitViewController.viewControllers.count == 1, let place = places.first {
+            presentDetail(for: place)
+        }
+    }
+}
+
+// MARK: Actions
+extension DefaultCoordinator {
+    func didSelect(place: Place, in controller: PlacesViewController) {
+        presentDetail(for: place)
+    }
+}
+
+// MARK: Private method
+private extension DefaultCoordinator {
+    func presentDetail(for place: Place) {
+        let viewModel = DetailViewModel(placeId: place.id, database: dependencies.databaseManager)
+        let detail = DetailViewController(viewModel: viewModel)
+        let detailNavigation = GoulashNavigationController(rootViewController: detail)
+
+        splitViewController.viewControllers = [masterViewController, detailNavigation]
     }
 }

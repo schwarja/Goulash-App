@@ -13,9 +13,9 @@ class PlacesViewController: UIViewController {
     private var tableView: UITableView!
     
     private let viewModel: PlacesViewModel
-    private weak var coordinator: DefaultCoordinator?
+    private weak var coordinator: ListCoordinator?
     
-    init(viewModel: PlacesViewModel, coordinator: DefaultCoordinator) {
+    init(viewModel: PlacesViewModel, coordinator: ListCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
         

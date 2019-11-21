@@ -9,13 +9,16 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    // swiftlint:disable:next implicitly_unwrapped_optional
+    // swiftlint:disable implicitly_unwrapped_optional
     private var titleLabel: UILabel!
+    private var newWindowButton: UIButton!
     
-    let viewModel: DetailViewModel
+    private let viewModel: DetailViewModel
+    private weak var coordinator: DetailCoordinator?
     
-    init(viewModel: DetailViewModel) {
+    init(viewModel: DetailViewModel, coordinator: DetailCoordinator) {
         self.viewModel = viewModel
+        self.coordinator = coordinator
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,6 +34,13 @@ class DetailViewController: UIViewController {
 extension DetailViewController: DetailViewModelDelegate {
     func didUpdateStatus(previous: DataStatus<Place>, new: DataStatus<Place>) {
         configureUI()
+    }
+}
+
+// MARK: Actions
+private extension DetailViewController {
+    @objc func newWindowTapped() {
+        coordinator?.didSelectOpenInNewWindow(in: self)
     }
 }
 
@@ -50,6 +60,15 @@ private extension DetailViewController {
         
         titleLabel.attachToSafeArea(left: ">=20", top: 20, right: ">=20")
         titleLabel.attach(centerX: 0)
+        
+        newWindowButton = UIButton(type: .system)
+        newWindowButton.setTitle("Open in new window", for: .normal)
+        newWindowButton.addTarget(self, action: #selector(self.newWindowTapped), for: .touchUpInside)
+        view.addSubview(newWindowButton)
+        
+        newWindowButton.attachToSafeArea(left: ">=20", right: ">=20")
+        newWindowButton.attach(toView: titleLabel, top: 40)
+        newWindowButton.attach(centerX: 0)
         
         configureUI()
     }

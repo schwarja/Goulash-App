@@ -9,8 +9,9 @@
 import Foundation
 
 enum Constants {
-    enum Scenes {
-        static let `default` = "DefaultSceneConfiguration"
+    enum Scenes: String {
+        case `default` = "DefaultSceneConfiguration"
+        case detail = "DetailSceneConfiguration"
     }
     
     enum Firebase {
@@ -22,5 +23,14 @@ enum Constants {
         static let configUrl = Bundle.main.path(forResource: "GoogleService-iOS", ofType: "plist")!
         #endif
         static let defaultIdAttributeName = "id"
+    }
+    
+    enum PlaceScene {
+        static let placeIdAttribute = "placeId"
+    }
+    
+    enum PlaceDetailActivity {
+        static let type = "placeDetail"
+        static let placeIdAttribute = "placeId"
     }
 }

@@ -29,6 +29,12 @@
 			<key>UIWindowSceneSessionRoleApplication</key>
 			<array>
 				<dict>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).DetailSceneDelegate</string>
+					<key>UISceneConfigurationName</key>
+					<string>DetailSceneConfiguration</string>
+				</dict>
+				<dict>
 					<key>UISceneConfigurationName</key>
 					<string>DefaultSceneConfiguration</string>
 					<key>UISceneDelegateClassName</key>

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		7B85A090BAF1AB7430ECD5F1 /* Pods_GoulashClub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3814C23BFA578661915EAC53 /* Pods_GoulashClub.framework */; };
 		AD598BEC23845A3B00762123 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD598BEB23845A3B00762123 /* DetailViewModel.swift */; };
+		AD9FF3562386BB58007E1448 /* DetailSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FF3552386BB58007E1448 /* DetailSceneDelegate.swift */; };
+		AD9FF3582386BB97007E1448 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FF3572386BB97007E1448 /* DetailCoordinator.swift */; };
+		AD9FF35A2386BC08007E1448 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FF3592386BC08007E1448 /* ListCoordinator.swift */; };
+		ADD7CFBE2386FB49003C0A80 /* NSUserActivitySet+Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD7CFBD2386FB49003C0A80 /* NSUserActivitySet+Scenes.swift */; };
 		C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178817236ADC24005FC9C0 /* AppDelegate.swift */; };
 		C117881A236ADC24005FC9C0 /* DefaultSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178819236ADC24005FC9C0 /* DefaultSceneDelegate.swift */; };
 		C1178821236ADC28005FC9C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1178820236ADC28005FC9C0 /* Assets.xcassets */; };
@@ -47,6 +51,10 @@
 		3814C23BFA578661915EAC53 /* Pods_GoulashClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoulashClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8206A4DC65D60E0E1BF07076 /* Pods-GoulashClub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoulashClub.debug.xcconfig"; path = "Target Support Files/Pods-GoulashClub/Pods-GoulashClub.debug.xcconfig"; sourceTree = "<group>"; };
 		AD598BEB23845A3B00762123 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		AD9FF3552386BB58007E1448 /* DetailSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSceneDelegate.swift; sourceTree = "<group>"; };
+		AD9FF3572386BB97007E1448 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
+		AD9FF3592386BC08007E1448 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
+		ADD7CFBD2386FB49003C0A80 /* NSUserActivitySet+Scenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserActivitySet+Scenes.swift"; sourceTree = "<group>"; };
 		C1178814236ADC24005FC9C0 /* GoulashClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoulashClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1178817236ADC24005FC9C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1178819236ADC24005FC9C0 /* DefaultSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +153,7 @@
 				C117882D236ADD78005FC9C0 /* SupportingFiles */,
 				C1178817236ADC24005FC9C0 /* AppDelegate.swift */,
 				C1178819236ADC24005FC9C0 /* DefaultSceneDelegate.swift */,
+				AD9FF3552386BB58007E1448 /* DetailSceneDelegate.swift */,
 			);
 			path = GoulashClub;
 			sourceTree = "<group>";
@@ -268,6 +277,7 @@
 				C1EEBD57237075E2002E31DF /* UIView+Layout.swift */,
 				C17E94872382AA10007315DF /* UIWidowSceneDelegate+AppCoordinator.swift */,
 				C17E94942382B0AC007315DF /* JSONDecoder+Firebase.swift */,
+				ADD7CFBD2386FB49003C0A80 /* NSUserActivitySet+Scenes.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,6 +332,8 @@
 			children = (
 				C1EEBD5D23707B70002E31DF /* AppCoordinator.swift */,
 				C133368E23716B7200CD5247 /* DefaultCoordinator.swift */,
+				AD9FF3572386BB97007E1448 /* DetailCoordinator.swift */,
+				AD9FF3592386BC08007E1448 /* ListCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -465,6 +477,7 @@
 				AD598BEC23845A3B00762123 /* DetailViewModel.swift in Sources */,
 				C17E947D23829065007315DF /* WRO.swift in Sources */,
 				C133369D2372EA1100CD5247 /* FirebaseManager.swift in Sources */,
+				AD9FF3562386BB58007E1448 /* DetailSceneDelegate.swift in Sources */,
 				C1EEBD5E23707B70002E31DF /* AppCoordinator.swift in Sources */,
 				C17E94932382AFC8007315DF /* DatabaseError.swift in Sources */,
 				C133368F23716B7200CD5247 /* DefaultCoordinator.swift in Sources */,
@@ -473,8 +486,10 @@
 				C17E94802382A44B007315DF /* AppDependency.swift in Sources */,
 				C19CCAA9236ADF920011B111 /* PlacesViewController.swift in Sources */,
 				C13336A02372EA9900CD5247 /* Place.swift in Sources */,
+				ADD7CFBE2386FB49003C0A80 /* NSUserActivitySet+Scenes.swift in Sources */,
 				C1EEBD5B23707628002E31DF /* LayoutSpecifier.swift in Sources */,
 				C17E94952382B0AC007315DF /* JSONDecoder+Firebase.swift in Sources */,
+				AD9FF35A2386BC08007E1448 /* ListCoordinator.swift in Sources */,
 				C17E94882382AA10007315DF /* UIWidowSceneDelegate+AppCoordinator.swift in Sources */,
 				C1EEBD52237071DD002E31DF /* GoulashSplitViewController.swift in Sources */,
 				C17E94902382AE45007315DF /* NibNameIdentifiable.swift in Sources */,
@@ -482,6 +497,7 @@
 				C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */,
 				C1C84018237F1068001D6340 /* DatabaseListener.swift in Sources */,
 				C192743C23705C5100A81743 /* UIViewController+ConvenienceInit.swift in Sources */,
+				AD9FF3582386BB97007E1448 /* DetailCoordinator.swift in Sources */,
 				C1EEBD58237075E2002E31DF /* UIView+Layout.swift in Sources */,
 				C1EEBD54237071FE002E31DF /* GoulashNavigationController.swift in Sources */,
 				C13336A22372EB0400CD5247 /* DataStatus.swift in Sources */,

@@ -8,21 +8,25 @@
 
 import UIKit
 
+protocol DefaultCoordinatorDelegate: class {
+    @available(iOS 13.0, *)
+    func requestSceneForPlace(with placeId: String, from coordinator: DefaultCoordinator)
+}
+
 class DefaultCoordinator: NSObject, Coordinating {
     let splitViewController = GoulashSplitViewController()
-    private lazy var masterViewController: GoulashNavigationController = {
-        let viewModel = PlacesViewModel(database: dependencies.databaseManager)
-        let list = PlacesViewController(viewModel: viewModel, coordinator: self)
-        let listNavigation = GoulashNavigationController(rootViewController: list)
-        return listNavigation
-    }()
+    weak var delegate: DefaultCoordinatorDelegate?
     
-    private var window: UIWindow
-    private let dependencies: AppDependencable
+    let window: UIWindow
+    let dependencies: AppDependencable
+    
+    private lazy var masterCoordinator: ListCoordinator = {
+        ListCoordinator(dependencies: self.dependencies, delegate: self)
+    }()
     
     private(set) var childCoordinators: [Coordinating] = []
 
-    init(window: UIWindow, dependencies: AppDependencable) {
+    init(dependencies: AppDependencable, window: UIWindow) {
         self.window = window
         self.dependencies = dependencies
     }
@@ -30,7 +34,9 @@ class DefaultCoordinator: NSObject, Coordinating {
     func start() {
         dependencies.databaseManager.register(placesListener: self)
         
-        splitViewController.viewControllers = [masterViewController]
+        childCoordinators.append(masterCoordinator)
+        masterCoordinator.start()
+        splitViewController.viewControllers = [masterCoordinator.rootViewController]
         
         window.rootViewController = splitViewController
         window.makeKeyAndVisible()
@@ -53,13 +59,24 @@ extension DefaultCoordinator {
     }
 }
 
-// MARK: Private method
-private extension DefaultCoordinator {
+// MARK: List coordinator delegate
+extension DefaultCoordinator: ListCoordinatorDelegate {
     func presentDetail(for place: Place) {
-        let viewModel = DetailViewModel(placeId: place.id, database: dependencies.databaseManager)
-        let detail = DetailViewController(viewModel: viewModel)
-        let detailNavigation = GoulashNavigationController(rootViewController: detail)
+        childCoordinators = childCoordinators.filter({ $0 is ListCoordinator })
+        
+        let detailCoordinator = DetailCoordinator(dependencies: dependencies, placeId: place.id)
+        detailCoordinator.delegate = self
+        childCoordinators.append(detailCoordinator)
+        detailCoordinator.start()
 
-        splitViewController.viewControllers = [masterViewController, detailNavigation]
+        splitViewController.viewControllers = [masterCoordinator.rootViewController, detailCoordinator.rootViewController]
+    }
+}
+
+// MARK: Detail coordinator delegate
+extension DefaultCoordinator: DetailCoordinatorDelegate {
+    @available(iOS 13.0, *)
+    func requestSceneForPlace(with placeId: String) {
+        delegate?.requestSceneForPlace(with: placeId, from: self)
     }
 }

@@ -9,16 +9,30 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    struct Dependency {
+        let viewModel: DetailViewModel
+        weak var coordinator: DetailCoordinator?
+        
+        let canRequestNewWindow: Bool
+        let canBeDismissed: Bool
+    }
+    
     // swiftlint:disable implicitly_unwrapped_optional
     private var titleLabel: UILabel!
-    private var newWindowButton: UIButton!
+    private var newWindowButton: UIButton?
+    private var closeButton: UIBarButtonItem?
+    // swiftlint:enable implicitly_unwrapped_optional
+
+    private let dependency: Dependency
+    private var viewModel: DetailViewModel {
+        dependency.viewModel
+    }
+    private var coordinator: DetailCoordinator? {
+        dependency.coordinator
+    }
     
-    private let viewModel: DetailViewModel
-    private weak var coordinator: DetailCoordinator?
-    
-    init(viewModel: DetailViewModel, coordinator: DetailCoordinator) {
-        self.viewModel = viewModel
-        self.coordinator = coordinator
+    init(dependency: Dependency) {
+        self.dependency = dependency
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -42,6 +56,10 @@ private extension DetailViewController {
     @objc func newWindowTapped() {
         coordinator?.didSelectOpenInNewWindow(in: self)
     }
+    
+    @objc func closeTapped() {
+        coordinator?.didSelectClose(in: self)
+    }
 }
 
 // MARK: Private methods
@@ -61,14 +79,23 @@ private extension DetailViewController {
         titleLabel.attachToSafeArea(left: ">=20", top: 20, right: ">=20")
         titleLabel.attach(centerX: 0)
         
-        newWindowButton = UIButton(type: .system)
-        newWindowButton.setTitle("Open in new window", for: .normal)
-        newWindowButton.addTarget(self, action: #selector(self.newWindowTapped), for: .touchUpInside)
-        view.addSubview(newWindowButton)
+        if dependency.canRequestNewWindow {
+            let newWindowButton = UIButton(type: .system)
+            newWindowButton.setTitle("Open in new window", for: .normal)
+            newWindowButton.addTarget(self, action: #selector(self.newWindowTapped), for: .touchUpInside)
+            view.addSubview(newWindowButton)
+            
+            newWindowButton.attachToSafeArea(left: ">=20", right: ">=20")
+            newWindowButton.attach(toView: titleLabel, top: 40)
+            newWindowButton.attach(centerX: 0)
+            
+            self.newWindowButton = newWindowButton
+        }
         
-        newWindowButton.attachToSafeArea(left: ">=20", right: ">=20")
-        newWindowButton.attach(toView: titleLabel, top: 40)
-        newWindowButton.attach(centerX: 0)
+        if dependency.canBeDismissed {
+            closeButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.closeTapped))
+            navigationItem.rightBarButtonItem = closeButton
+        }
         
         configureUI()
     }

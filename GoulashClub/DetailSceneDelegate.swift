@@ -11,22 +11,30 @@ import UIKit
 @available(iOS 13.0, *)
 class DetailSceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    private var coordinator: DetailCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else {
             return
         }
-        guard let placeId = connectionOptions
-            .userActivities.firstPlaceDetailActivity?
-            .userInfo?[Constants.PlaceDetailActivity.placeIdAttribute] as? String else {
+        
+        let activity = connectionOptions
+            .userActivities.firstDetailSceneActivity ?? session.stateRestorationActivity
+        guard let placeId = activity?
+            .userInfo?[Constants.DetailSceneActivity.placeIdAttribute] as? String else {
+                appCoordinator.destroy(sceneSession: session)
                 return
         }
         
         let window = UIWindow(windowScene: windowScene)
                 
-        appCoordinator.startPlaceScene(for: placeId, with: window)
+        coordinator = appCoordinator.startPlaceScene(for: session, placeId: placeId, with: window)
 
         self.window = window
+    }
+    
+    func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {
+        return coordinator?.restorationActivity
     }
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
@@ -35,6 +43,10 @@ class DetailSceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidDisconnect(_ scene: UIScene) {
         print("Scene did disconnect - \(scene.title ?? "")")
+        
+        if let coordinator = coordinator {
+            appCoordinator.discard(coordinator: coordinator)
+        }
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {

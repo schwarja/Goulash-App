@@ -9,6 +9,7 @@
 import UIKit
 
 protocol Coordinating {
+    var identifier: String { get }
     var childCoordinators: [Coordinating] { get }
     
     func start()

@@ -9,6 +9,8 @@
 import Foundation
 
 protocol DatabaseManaging {
+    var places: DataStatus<[Place]> { get }
+    
     func register<Listener: NSObject>(placesListener: Listener) where Listener: PlacesDatabaseListener
     func register<Listener: NSObject>(placeListener: Listener, for id: String) where Listener: PlaceDatabaseListener
 }

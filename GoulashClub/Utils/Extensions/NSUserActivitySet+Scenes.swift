@@ -9,11 +9,11 @@
 import Foundation
 
 extension Set where Element == NSUserActivity {
-    var containsPlaceDetailActivity: Bool {
-        self.contains(where: { $0.activityType == Constants.PlaceDetailActivity.type })
+    var containsDetailSceneActivity: Bool {
+        self.contains(where: { $0.activityType == Constants.DetailSceneActivity.type })
     }
     
-    var firstPlaceDetailActivity: NSUserActivity? {
-        self.first(where: { $0.activityType == Constants.PlaceDetailActivity.type })
+    var firstDetailSceneActivity: NSUserActivity? {
+        self.first(where: { $0.activityType == Constants.DetailSceneActivity.type })
     }
 }

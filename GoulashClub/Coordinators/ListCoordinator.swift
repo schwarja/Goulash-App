@@ -13,6 +13,7 @@ protocol ListCoordinatorDelegate: class {
 }
 
 class ListCoordinator: Coordinating {
+    let identifier = UUID().uuidString
     let rootViewController = GoulashNavigationController()
     
     weak var delegate: ListCoordinatorDelegate?

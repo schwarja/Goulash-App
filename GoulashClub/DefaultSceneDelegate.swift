@@ -11,6 +11,7 @@ import UIKit
 @available(iOS 13.0, *)
 class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    private var coordinator: DefaultCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else {
@@ -19,9 +20,18 @@ class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
                 
-        appCoordinator.startDefaultScene(with: window)
-
+        coordinator = appCoordinator.startDefaultScene(with: window)
+        if let activity = session.stateRestorationActivity,
+            let placeId = activity.userInfo?[Constants.DefaultSceneActivity.placeIdAttribute] as? String {
+            
+            coordinator?.showDetail(for: placeId)
+        }
+        
         self.window = window
+    }
+    
+    func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {
+        return coordinator?.restorationActivity
     }
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
@@ -30,6 +40,10 @@ class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidDisconnect(_ scene: UIScene) {
         print("Scene did disconnect - \(scene.title ?? "")")
+        
+        if let coordinator = coordinator {
+            appCoordinator.discard(coordinator: coordinator)
+        }
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {

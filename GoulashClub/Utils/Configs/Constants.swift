@@ -29,8 +29,13 @@ enum Constants {
         static let placeIdAttribute = "placeId"
     }
     
-    enum PlaceDetailActivity {
+    enum DetailSceneActivity {
         static let type = "placeDetail"
+        static let placeIdAttribute = "placeId"
+    }
+    
+    enum DefaultSceneActivity {
+        static let type = "default"
         static let placeIdAttribute = "placeId"
     }
 }

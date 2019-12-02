@@ -46,6 +46,19 @@ class PlacesViewModel: NSObject {
         
         return data[row]
     }
+    
+    func dragItemProvider(at row: Int) -> NSItemProvider {
+        guard case let .ready(data) = places else {
+            fatalError("No data available")
+        }
+        
+        let place = data[row]
+        let activity = DetailSceneActivity(placeId: place.id)
+        let provider = NSItemProvider()
+        provider.registerObject(activity, visibility: .all)
+
+        return provider
+    }
 }
 
 // MARK: PlacesListener

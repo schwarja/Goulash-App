@@ -58,6 +58,15 @@ extension PlacesViewController: UITableViewDelegate {
     }
 }
 
+// MARK: Table View Drag Delegate
+extension PlacesViewController: UITableViewDragDelegate {
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let provider = viewModel.dragItemProvider(at: indexPath.row)
+        let item = UIDragItem(itemProvider: provider)
+        return [item]
+    }
+}
+
 // MARK: View Model Delegate
 extension PlacesViewController: PlacesViewModelDelegate {
     func didUpdateStatus(previous: DataStatus<[Place]>, new: DataStatus<[Place]>) {
@@ -81,5 +90,6 @@ private extension PlacesViewController {
         tableView.register(type: PlaceCell.self)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.dragDelegate = self
     }
 }

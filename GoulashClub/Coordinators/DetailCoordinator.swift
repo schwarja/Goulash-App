@@ -30,12 +30,19 @@ class DetailCoordinator: Coordinating, Restorable {
     private(set) var childCoordinators: [Coordinating] = []
     private let dependencies: AppDependencable
     
-    private(set) var restorationActivity: DetailSceneActivity?
+    lazy var restorationActivity: DetailSceneActivity? = {
+        let activity = DetailSceneActivity(placeId: placeId)
+        return activity
+    }()
 
     init(dependencies: AppDependencable, placeId: String, window: UIWindow? = nil) {
         self.dependencies = dependencies
         self.placeId = placeId
         self.window = window
+    }
+    
+    deinit {
+        restorationActivity?.resignCurrent()
     }
 
     func start() {
@@ -56,7 +63,7 @@ class DetailCoordinator: Coordinating, Restorable {
         let detail = DetailViewController(dependency: dependency)
         rootViewController.setViewControllers([detail], animated: false)
         
-        restorationActivity = DetailSceneActivity(placeId: placeId)
+        restorationActivity?.becomeCurrent()
         
         if let window = window {
             window.rootViewController = rootViewController

@@ -18,5 +18,9 @@ class DetailSceneActivity: NSUserActivity {
         
         self.requiredUserInfoKeys = [Constants.DetailSceneActivity.placeIdAttribute]
         self.userInfo = [Constants.DetailSceneActivity.placeIdAttribute: placeId]
+        
+        if #available(iOS 13.0, *) {
+            self.targetContentIdentifier = "\(self.activityType)/\(placeId)"
+        }
     }
 }

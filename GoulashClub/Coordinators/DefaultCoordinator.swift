@@ -88,6 +88,15 @@ extension DefaultCoordinator {
 // MARK: List coordinator delegate
 extension DefaultCoordinator: ListCoordinatorDelegate {
     func presentDetail(for place: Place) {
+        if masterCoordinator.rootViewController.viewControllers.count == 1 {
+            showDetail(for: place)
+        } else if masterCoordinator.rootViewController.viewControllers.count > 1 {
+            masterCoordinator.rootViewController.popToRootViewController(animated: false)
+            showDetail(for: place)
+        }
+    }
+    
+    private func showDetail(for place: Place) {
         childCoordinators = childCoordinators.filter({ $0.identifier == self.masterCoordinator.identifier })
         
         let detailCoordinator = DetailCoordinator(dependencies: dependencies, placeId: place.id)

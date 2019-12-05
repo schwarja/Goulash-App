@@ -31,6 +31,8 @@ class DetailSceneDelegate: UIResponder, UIWindowSceneDelegate {
         coordinator = appCoordinator.startPlaceScene(for: session, placeId: placeId, with: window)
 
         self.window = window
+        
+        scene.activationConditions.canActivateForTargetContentIdentifierPredicate = NSPredicate(format: "self == %@", "\(Constants.DetailSceneActivity.type)/\(placeId)")
     }
     
     func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {

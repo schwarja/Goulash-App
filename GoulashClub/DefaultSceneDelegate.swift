@@ -28,6 +28,9 @@ class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         self.window = window
+        
+        scene.activationConditions.canActivateForTargetContentIdentifierPredicate = NSPredicate(value: true)
+        scene.activationConditions.prefersToActivateForTargetContentIdentifierPredicate = NSPredicate(format: "self == %@", Constants.DefaultSceneActivity.type)
     }
     
     func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {
@@ -36,6 +39,11 @@ class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
         print("Continue user activity: \(userActivity)")
+        
+        if userActivity.activityType == Constants.DetailSceneActivity.type,
+            let placeId = userActivity.userInfo?[Constants.DetailSceneActivity.placeIdAttribute] as? String {
+            coordinator?.showDetail(for: placeId)
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -20,6 +20,11 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER).default</string>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER).placeDetail</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -28,17 +33,17 @@
 		<dict>
 			<key>UIWindowSceneSessionRoleApplication</key>
 			<array>
+                <dict>
+                    <key>UISceneConfigurationName</key>
+                    <string>DefaultSceneConfiguration</string>
+                    <key>UISceneDelegateClassName</key>
+                    <string>$(PRODUCT_MODULE_NAME).DefaultSceneDelegate</string>
+                </dict>
 				<dict>
-					<key>UISceneDelegateClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).DetailSceneDelegate</string>
 					<key>UISceneConfigurationName</key>
 					<string>DetailSceneConfiguration</string>
-				</dict>
-				<dict>
-					<key>UISceneConfigurationName</key>
-					<string>DefaultSceneConfiguration</string>
 					<key>UISceneDelegateClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).DefaultSceneDelegate</string>
+					<string>$(PRODUCT_MODULE_NAME).DetailSceneDelegate</string>
 				</dict>
 			</array>
 		</dict>
@@ -61,11 +66,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>NSUserActivityTypes</key>
-	<array>
-		<string>default</string>
-		<string>placeDetail</string>
 	</array>
 </dict>
 </plist>

@@ -9,6 +9,11 @@
 import Foundation
 
 enum Constants {
+    enum App {
+        // swiftlint:disable:next force_unwrapping
+        static let bundleId = Bundle.main.bundleIdentifier!
+    }
+    
     enum Scenes: String {
         case `default` = "DefaultSceneConfiguration"
         case detail = "DetailSceneConfiguration"
@@ -30,12 +35,12 @@ enum Constants {
     }
     
     enum DetailSceneActivity {
-        static let type = "placeDetail"
+        static let type = "\(App.bundleId).placeDetail"
         static let placeIdAttribute = "placeId"
     }
     
     enum DefaultSceneActivity {
-        static let type = "default"
+        static let type = "\(App.bundleId).default"
         static let placeIdAttribute = "placeId"
     }
 }

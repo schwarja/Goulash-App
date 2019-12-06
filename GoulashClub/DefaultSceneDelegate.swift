@@ -84,8 +84,8 @@ class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
 @available(iOS 13.0, *)
 private extension DefaultSceneDelegate {
     func process(shortcutItem: UIApplicationShortcutItem) {
-        if shortcutItem.isDetailShortcut, let placeId = shortcutItem.userInfo?[Constants.DetailShortcutItem.placeIdAttribute] as? NSString {
-            coordinator?.showDetail(for: placeId as String)
+        if shortcutItem.isDetailShortcut, let placeId = shortcutItem.userInfo?[Constants.DetailShortcutItem.placeIdAttribute] as? String {
+            coordinator?.showDetail(for: placeId)
         }
     }
 }

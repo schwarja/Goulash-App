@@ -40,6 +40,15 @@ class AppCoordinator: Coordinating {
             childCoordinators.remove(at: index)
         }
     }
+    
+    func handle(shortcut item: UIApplicationShortcutItem) {
+        if item.isDetailShortcut,
+            let placeId = item.userInfo?[Constants.DetailShortcutItem.placeIdAttribute] as? String,
+            let coordinator = childCoordinators.compactMap({ $0 as? DefaultCoordinator }).first {
+                
+            coordinator.showDetail(for: placeId)
+        }
+    }
 }
  
 // MARK: Scenes management

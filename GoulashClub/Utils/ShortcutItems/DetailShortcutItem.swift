@@ -9,8 +9,8 @@
 import UIKit
 
 class DetailShortcutItem: UIMutableApplicationShortcutItem {
-    var placeId: NSString? {
-        userInfo?[Constants.DetailShortcutItem.type] as? NSString
+    var placeId: String? {
+        userInfo?[Constants.DetailShortcutItem.type] as? String
     }
     
     init(placeId: String, name: String?) {
@@ -22,6 +22,8 @@ class DetailShortcutItem: UIMutableApplicationShortcutItem {
             userInfo: [Constants.DetailShortcutItem.placeIdAttribute: placeId as NSString]
         )
         
-        targetContentIdentifier = "\(Constants.DetailShortcutItem.targetContentIdentifierPrefix)/\(placeId)"
+        if #available(iOS 13.0, *) {
+            self.targetContentIdentifier = "\(Constants.DetailShortcutItem.targetContentIdentifierPrefix)/\(placeId)"
+        }
     }
 }

@@ -23,8 +23,8 @@ class DetailSceneDelegate: UIResponder, UIWindowSceneDelegate {
         let sessionPlaceId = activity?.userInfo?[Constants.DetailSceneActivity.placeIdAttribute] as? String
         
         let shortcutPlaceId: String?
-        if let item = connectionOptions.shortcutItem, item.isDetailShortcut, let placeId = item.userInfo?[Constants.DetailShortcutItem.placeIdAttribute] as? NSString {
-            shortcutPlaceId = placeId as String
+        if let item = connectionOptions.shortcutItem, item.isDetailShortcut, let placeId = item.userInfo?[Constants.DetailShortcutItem.placeIdAttribute] as? String {
+            shortcutPlaceId = placeId
         } else {
             shortcutPlaceId = nil
         }

@@ -30,6 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window = window
         }
         
+        if let item = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem {
+            coordinator.handle(shortcut: item)
+        }
+        
         return true
     }
     
@@ -39,6 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
         print("Application did receive memory warning - \(application)")
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        coordinator.handle(shortcut: shortcutItem)
+        completionHandler(true)
     }
 }
  

@@ -39,6 +39,12 @@ enum Constants {
         static let placeIdAttribute = "placeId"
     }
     
+    enum DetailShortcutItem {
+        static let type = "\(App.bundleId).shortcut.placeDetail"
+        static let targetContentIdentifierPrefix = "\(App.bundleId).shortcut.placeDetail"
+        static let placeIdAttribute = "placeId"
+    }
+    
     enum DefaultSceneActivity {
         static let type = "\(App.bundleId).default"
         static let placeIdAttribute = "placeId"

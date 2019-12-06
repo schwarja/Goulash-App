@@ -12,10 +12,12 @@
 		AD9FF3562386BB58007E1448 /* DetailSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FF3552386BB58007E1448 /* DetailSceneDelegate.swift */; };
 		AD9FF3582386BB97007E1448 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FF3572386BB97007E1448 /* DetailCoordinator.swift */; };
 		AD9FF35A2386BC08007E1448 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FF3592386BC08007E1448 /* ListCoordinator.swift */; };
+		ADA6EDAA239A57D9005BB9AA /* UIApplicationShortcutItem+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA6EDA9239A57D9005BB9AA /* UIApplicationShortcutItem+Convenience.swift */; };
 		ADD7CFBE2386FB49003C0A80 /* NSUserActivitySet+Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD7CFBD2386FB49003C0A80 /* NSUserActivitySet+Scenes.swift */; };
 		ADD7CFC0238D8E17003C0A80 /* Restorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD7CFBF238D8E17003C0A80 /* Restorable.swift */; };
 		ADD7CFC3238D8F20003C0A80 /* DetailSceneActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD7CFC2238D8F20003C0A80 /* DetailSceneActivity.swift */; };
 		ADD7CFC5238D93A9003C0A80 /* DefaultSceneActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD7CFC4238D93A9003C0A80 /* DefaultSceneActivity.swift */; };
+		ADEEF59C239A561F00FDE7FA /* DetailShortcutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEF59B239A561F00FDE7FA /* DetailShortcutItem.swift */; };
 		C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178817236ADC24005FC9C0 /* AppDelegate.swift */; };
 		C117881A236ADC24005FC9C0 /* DefaultSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178819236ADC24005FC9C0 /* DefaultSceneDelegate.swift */; };
 		C1178821236ADC28005FC9C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1178820236ADC28005FC9C0 /* Assets.xcassets */; };
@@ -57,10 +59,12 @@
 		AD9FF3552386BB58007E1448 /* DetailSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSceneDelegate.swift; sourceTree = "<group>"; };
 		AD9FF3572386BB97007E1448 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		AD9FF3592386BC08007E1448 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
+		ADA6EDA9239A57D9005BB9AA /* UIApplicationShortcutItem+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplicationShortcutItem+Convenience.swift"; sourceTree = "<group>"; };
 		ADD7CFBD2386FB49003C0A80 /* NSUserActivitySet+Scenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserActivitySet+Scenes.swift"; sourceTree = "<group>"; };
 		ADD7CFBF238D8E17003C0A80 /* Restorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restorable.swift; sourceTree = "<group>"; };
 		ADD7CFC2238D8F20003C0A80 /* DetailSceneActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSceneActivity.swift; sourceTree = "<group>"; };
 		ADD7CFC4238D93A9003C0A80 /* DefaultSceneActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSceneActivity.swift; sourceTree = "<group>"; };
+		ADEEF59B239A561F00FDE7FA /* DetailShortcutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailShortcutItem.swift; sourceTree = "<group>"; };
 		C1178814236ADC24005FC9C0 /* GoulashClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoulashClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1178817236ADC24005FC9C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1178819236ADC24005FC9C0 /* DefaultSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +131,14 @@
 				ADD7CFC4238D93A9003C0A80 /* DefaultSceneActivity.swift */,
 			);
 			path = Activities;
+			sourceTree = "<group>";
+		};
+		ADEEF59A239A560300FDE7FA /* ShortcutItems */ = {
+			isa = PBXGroup;
+			children = (
+				ADEEF59B239A561F00FDE7FA /* DetailShortcutItem.swift */,
+			);
+			path = ShortcutItems;
 			sourceTree = "<group>";
 		};
 		AF592909AF22E0BA6811FF94 /* Frameworks */ = {
@@ -274,6 +286,7 @@
 		C192743923705C2E00A81743 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				ADEEF59A239A560300FDE7FA /* ShortcutItems */,
 				ADD7CFC1238D8EF0003C0A80 /* Activities */,
 				C17E947B23829052007315DF /* Helpers */,
 				C133369B2372E9F900CD5247 /* Manag */,
@@ -294,6 +307,7 @@
 				C17E94872382AA10007315DF /* UIWidowSceneDelegate+AppCoordinator.swift */,
 				C17E94942382B0AC007315DF /* JSONDecoder+Firebase.swift */,
 				ADD7CFBD2386FB49003C0A80 /* NSUserActivitySet+Scenes.swift */,
+				ADA6EDA9239A57D9005BB9AA /* UIApplicationShortcutItem+Convenience.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -490,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C17E94822382A483007315DF /* AppDependencable.swift in Sources */,
+				ADA6EDAA239A57D9005BB9AA /* UIApplicationShortcutItem+Convenience.swift in Sources */,
 				C17E94842382A5E7007315DF /* Coordinating.swift in Sources */,
 				AD598BEC23845A3B00762123 /* DetailViewModel.swift in Sources */,
 				C17E947D23829065007315DF /* WRO.swift in Sources */,
@@ -518,6 +533,7 @@
 				C192743C23705C5100A81743 /* UIViewController+ConvenienceInit.swift in Sources */,
 				AD9FF3582386BB97007E1448 /* DetailCoordinator.swift in Sources */,
 				C1EEBD58237075E2002E31DF /* UIView+Layout.swift in Sources */,
+				ADEEF59C239A561F00FDE7FA /* DetailShortcutItem.swift in Sources */,
 				C1EEBD54237071FE002E31DF /* GoulashNavigationController.swift in Sources */,
 				ADD7CFC3238D8F20003C0A80 /* DetailSceneActivity.swift in Sources */,
 				C13336A22372EB0400CD5247 /* DataStatus.swift in Sources */,

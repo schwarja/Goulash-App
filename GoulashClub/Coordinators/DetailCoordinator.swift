@@ -18,7 +18,7 @@ protocol DetailCoordinatorInSplitDelegate: class {
     func requestSceneForPlace(with placeId: String)
 }
 
-class DetailCoordinator: Coordinating, Restorable {
+class DetailCoordinator: NSObject, Coordinating, Restorable {
     let identifier = UUID().uuidString
     let window: UIWindow?
     let rootViewController = GoulashNavigationController()
@@ -65,10 +65,35 @@ class DetailCoordinator: Coordinating, Restorable {
         
         restorationActivity?.becomeCurrent()
         
+        configureShortcutItem()
+        
+        dependencies.databaseManager.register(placeListener: self, for: placeId)
+
         if let window = window {
             window.rootViewController = rootViewController
             window.makeKeyAndVisible()
         }
+    }
+}
+
+// MARK: Place listener
+extension DetailCoordinator: PlaceDatabaseListener {
+    func didUpdatePlace(with id: String, place: DataStatus<Place>) {
+        if case .ready(let item) = place {
+            configureShortcutItem(with: item)
+        }
+    }
+}
+
+// MARK: Private methods
+private extension DetailCoordinator {
+    func configureShortcutItem(with place: Place? = nil) {
+        var items = UIApplication.shared.shortcutItems ?? []
+        items = items.filter({ !$0.isDetailShortcut })
+        
+        let item = DetailShortcutItem(placeId: placeId, name: place?.name)
+        items.append(item)
+        UIApplication.shared.shortcutItems = items
     }
 }
 

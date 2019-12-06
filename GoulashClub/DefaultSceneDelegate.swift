@@ -27,6 +27,10 @@ class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
             coordinator?.showDetail(for: placeId)
         }
         
+        if let item = connectionOptions.shortcutItem {
+            process(shortcutItem: item)
+        }
+
         self.window = window
         
         scene.activationConditions.canActivateForTargetContentIdentifierPredicate = NSPredicate(value: true)
@@ -44,6 +48,11 @@ class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
             let placeId = userActivity.userInfo?[Constants.DetailSceneActivity.placeIdAttribute] as? String {
             coordinator?.showDetail(for: placeId)
         }
+    }
+    
+    func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        process(shortcutItem: shortcutItem)
+        completionHandler(true)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -68,5 +77,15 @@ class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         print("Scene did enter background - \(scene.title ?? "")")
+    }
+}
+
+// MARK: Private methods
+@available(iOS 13.0, *)
+private extension DefaultSceneDelegate {
+    func process(shortcutItem: UIApplicationShortcutItem) {
+        if shortcutItem.isDetailShortcut, let placeId = shortcutItem.userInfo?[Constants.DetailShortcutItem.placeIdAttribute] as? NSString {
+            coordinator?.showDetail(for: placeId as String)
+        }
     }
 }

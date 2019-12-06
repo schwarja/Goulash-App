@@ -20,10 +20,18 @@ class DetailSceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let activity = connectionOptions
             .userActivities.firstDetailSceneActivity ?? session.stateRestorationActivity
-        guard let placeId = activity?
-            .userInfo?[Constants.DetailSceneActivity.placeIdAttribute] as? String else {
-                appCoordinator.destroy(sceneSession: session)
-                return
+        let sessionPlaceId = activity?.userInfo?[Constants.DetailSceneActivity.placeIdAttribute] as? String
+        
+        let shortcutPlaceId: String?
+        if let item = connectionOptions.shortcutItem, item.isDetailShortcut, let placeId = item.userInfo?[Constants.DetailShortcutItem.placeIdAttribute] as? NSString {
+            shortcutPlaceId = placeId as String
+        } else {
+            shortcutPlaceId = nil
+        }
+        
+        guard let placeId = sessionPlaceId ?? shortcutPlaceId else {
+            appCoordinator.destroy(sceneSession: session)
+            return
         }
         
         let window = UIWindow(windowScene: windowScene)
@@ -32,7 +40,11 @@ class DetailSceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         self.window = window
         
-        scene.activationConditions.canActivateForTargetContentIdentifierPredicate = NSPredicate(format: "self == %@", "\(Constants.DetailSceneActivity.type)/\(placeId)")
+        let handOffPredicate = NSPredicate(format: "self == %@", "\(Constants.DetailSceneActivity.type)/\(placeId)")
+        let shortcutPredicate = NSPredicate(format: "self == %@", "\(Constants.DetailShortcutItem.targetContentIdentifierPrefix)/\(placeId)")
+        let compoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [handOffPredicate, shortcutPredicate])
+        scene.activationConditions.canActivateForTargetContentIdentifierPredicate = compoundPredicate
+        scene.activationConditions.prefersToActivateForTargetContentIdentifierPredicate = compoundPredicate
     }
     
     func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {
@@ -41,6 +53,14 @@ class DetailSceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
         print("Continue user activity: \(userActivity)")
+    }
+    
+    func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        if shortcutItem.isDetailShortcut, let placeId = shortcutItem.userInfo?[Constants.DetailShortcutItem.placeIdAttribute] as? NSString {
+            completionHandler(placeId as String == coordinator?.placeId)
+        } else {
+            completionHandler(false)
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

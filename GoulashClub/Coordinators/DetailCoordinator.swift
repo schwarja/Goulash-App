@@ -81,6 +81,7 @@ extension DetailCoordinator: PlaceDatabaseListener {
     func didUpdatePlace(with id: String, place: DataStatus<Place>) {
         if case .ready(let item) = place {
             configureShortcutItem(with: item)
+            restorationActivity?.update(with: item)
         }
     }
 }

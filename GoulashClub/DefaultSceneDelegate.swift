@@ -21,11 +21,17 @@ class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
                 
         coordinator = appCoordinator.startDefaultScene(with: window)
-        if let activity = session.stateRestorationActivity,
+        
+        if let activity = connectionOptions.userActivities.firstDetailSceneActivity,
+            let placeId = activity.userInfo?[Constants.DetailSceneActivity.placeIdAttribute] as? String {
+            
+            coordinator?.showDetail(for: placeId)
+        } else if let activity = session.stateRestorationActivity,
             let placeId = activity.userInfo?[Constants.DefaultSceneActivity.placeIdAttribute] as? String {
             
             coordinator?.showDetail(for: placeId)
         }
+
         
         if let item = connectionOptions.shortcutItem {
             process(shortcutItem: item)

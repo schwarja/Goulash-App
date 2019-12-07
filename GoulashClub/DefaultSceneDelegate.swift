@@ -39,7 +39,7 @@ class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         self.window = window
         
-        scene.activationConditions.canActivateForTargetContentIdentifierPredicate = NSPredicate(value: true)
+        scene.activationConditions.canActivateForTargetContentIdentifierPredicate = NSPredicate(format: "self == %@", Constants.DefaultSceneActivity.type)
         scene.activationConditions.prefersToActivateForTargetContentIdentifierPredicate = NSPredicate(format: "self == %@", Constants.DefaultSceneActivity.type)
     }
     

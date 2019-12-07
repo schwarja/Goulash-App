@@ -30,14 +30,14 @@ class DetailSceneDelegate: UIResponder, UIWindowSceneDelegate {
             shortcutPlaceId = nil
         }
         
-        guard let placeId = sessionPlaceId ?? shortcutPlaceId else {
+        let window = UIWindow(windowScene: windowScene)
+                
+        if let placeId = sessionPlaceId ?? shortcutPlaceId {
+            configureScene(for: placeId, with: window, session: session)
+        } else if connectionOptions.handoffUserActivityType != Constants.DetailSceneActivity.type {
             appCoordinator.destroy(sceneSession: session)
             return
         }
-        
-        let window = UIWindow(windowScene: windowScene)
-                
-        configureScene(for: placeId, with: window, session: session)
         
         self.session = session
         self.window = window

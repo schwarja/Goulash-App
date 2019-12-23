@@ -33,12 +33,12 @@
 		<dict>
 			<key>UIWindowSceneSessionRoleApplication</key>
 			<array>
-                <dict>
-                    <key>UISceneConfigurationName</key>
-                    <string>DefaultSceneConfiguration</string>
-                    <key>UISceneDelegateClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).DefaultSceneDelegate</string>
-                </dict>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>DefaultSceneConfiguration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).DefaultSceneDelegate</string>
+				</dict>
 				<dict>
 					<key>UISceneConfigurationName</key>
 					<string>DetailSceneConfiguration</string>
@@ -66,6 +66,12 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+        <string>SFProDisplay-Bold.ttf</string>
+        <string>SFProDisplay-Semibold.ttf</string>
+        <string>SFProDisplay-Regular.ttf</string>
 	</array>
 </dict>
 </plist>

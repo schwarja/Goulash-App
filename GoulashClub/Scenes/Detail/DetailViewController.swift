@@ -71,16 +71,20 @@ private extension DetailViewController {
     }
     
     func setupUI() {
+        view.backgroundColor = .appBackground
+        
         titleLabel = UILabel()
-        titleLabel.text = "Detail"
-        titleLabel.textColor = .yellow
+        titleLabel.font = .appTitle
+        titleLabel.textColor = .appText
         view.addSubview(titleLabel)
         
         titleLabel.attachToSafeArea(left: ">=20", top: 20, right: ">=20")
         titleLabel.attach(centerX: 0)
         
         if dependency.canRequestNewWindow {
-            let newWindowButton = UIButton(type: .system)
+            let newWindowButton = UIButton()
+            newWindowButton.setTitleColor(.appText, for: .normal)
+            newWindowButton.titleLabel?.font = .appButton
             newWindowButton.setTitle("Open in new window", for: .normal)
             newWindowButton.addTarget(self, action: #selector(self.newWindowTapped), for: .touchUpInside)
             view.addSubview(newWindowButton)
@@ -103,13 +107,17 @@ private extension DetailViewController {
     func configureUI() {
         switch viewModel.place {
         case .initial:
+            navigationItem.title = ""
             titleLabel.text = "No Place"
         case .loading:
+            navigationItem.title = ""
             titleLabel.text = "Loading"
         case .error(let error):
+            navigationItem.title = ""
             titleLabel.text = error.localizedDescription
         case .ready(let place):
-            titleLabel.text = place.name
+            navigationItem.title = place.name
+            titleLabel.text = ""
         }
     }
 }

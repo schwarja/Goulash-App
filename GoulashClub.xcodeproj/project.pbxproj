@@ -17,6 +17,11 @@
 		ADD7CFC0238D8E17003C0A80 /* Restorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD7CFBF238D8E17003C0A80 /* Restorable.swift */; };
 		ADD7CFC3238D8F20003C0A80 /* DetailSceneActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD7CFC2238D8F20003C0A80 /* DetailSceneActivity.swift */; };
 		ADD7CFC5238D93A9003C0A80 /* DefaultSceneActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD7CFC4238D93A9003C0A80 /* DefaultSceneActivity.swift */; };
+		ADEDE5E023B1171E001C8238 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDE5DF23B1171E001C8238 /* UIColor+AppColors.swift */; };
+		ADEDE5E223B1172C001C8238 /* UIFont+AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDE5E123B1172C001C8238 /* UIFont+AppFonts.swift */; };
+		ADEDE5EA23B1178B001C8238 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADEDE5E423B11782001C8238 /* SFProDisplay-Bold.ttf */; };
+		ADEDE5EB23B1178B001C8238 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADEDE5E523B11785001C8238 /* SFProDisplay-Regular.ttf */; };
+		ADEDE5EF23B1178B001C8238 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADEDE5E923B1178B001C8238 /* SFProDisplay-Semibold.ttf */; };
 		ADEEF59C239A561F00FDE7FA /* DetailShortcutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEF59B239A561F00FDE7FA /* DetailShortcutItem.swift */; };
 		C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178817236ADC24005FC9C0 /* AppDelegate.swift */; };
 		C117881A236ADC24005FC9C0 /* DefaultSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178819236ADC24005FC9C0 /* DefaultSceneDelegate.swift */; };
@@ -64,6 +69,11 @@
 		ADD7CFBF238D8E17003C0A80 /* Restorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restorable.swift; sourceTree = "<group>"; };
 		ADD7CFC2238D8F20003C0A80 /* DetailSceneActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSceneActivity.swift; sourceTree = "<group>"; };
 		ADD7CFC4238D93A9003C0A80 /* DefaultSceneActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSceneActivity.swift; sourceTree = "<group>"; };
+		ADEDE5DF23B1171E001C8238 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
+		ADEDE5E123B1172C001C8238 /* UIFont+AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+AppFonts.swift"; sourceTree = "<group>"; };
+		ADEDE5E423B11782001C8238 /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		ADEDE5E523B11785001C8238 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		ADEDE5E923B1178B001C8238 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
 		ADEEF59B239A561F00FDE7FA /* DetailShortcutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailShortcutItem.swift; sourceTree = "<group>"; };
 		C1178814236ADC24005FC9C0 /* GoulashClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoulashClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1178817236ADC24005FC9C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +141,16 @@
 				ADD7CFC4238D93A9003C0A80 /* DefaultSceneActivity.swift */,
 			);
 			path = Activities;
+			sourceTree = "<group>";
+		};
+		ADEDE5E323B11735001C8238 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				ADEDE5E423B11782001C8238 /* SFProDisplay-Bold.ttf */,
+				ADEDE5E523B11785001C8238 /* SFProDisplay-Regular.ttf */,
+				ADEDE5E923B1178B001C8238 /* SFProDisplay-Semibold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		ADEEF59A239A560300FDE7FA /* ShortcutItems */ = {
@@ -308,6 +328,8 @@
 				C17E94942382B0AC007315DF /* JSONDecoder+Firebase.swift */,
 				ADD7CFBD2386FB49003C0A80 /* NSUserActivitySet+Scenes.swift */,
 				ADA6EDA9239A57D9005BB9AA /* UIApplicationShortcutItem+Convenience.swift */,
+				ADEDE5DF23B1171E001C8238 /* UIColor+AppColors.swift */,
+				ADEDE5E123B1172C001C8238 /* UIFont+AppFonts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,6 +337,7 @@
 		C19CCAAA236AE9BC0011B111 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ADEDE5E323B11735001C8238 /* Fonts */,
 				C1178820236ADC28005FC9C0 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -431,6 +454,9 @@
 			files = (
 				C13336972371EEFC00CD5247 /* GoogleService-Mac.plist in Resources */,
 				C1178833236ADE9B005FC9C0 /* LaunchScreen.storyboard in Resources */,
+				ADEDE5EF23B1178B001C8238 /* SFProDisplay-Semibold.ttf in Resources */,
+				ADEDE5EA23B1178B001C8238 /* SFProDisplay-Bold.ttf in Resources */,
+				ADEDE5EB23B1178B001C8238 /* SFProDisplay-Regular.ttf in Resources */,
 				C13336952371EEF200CD5247 /* GoogleService-iOS.plist in Resources */,
 				C1178821236ADC28005FC9C0 /* Assets.xcassets in Resources */,
 			);
@@ -506,8 +532,10 @@
 				C17E94822382A483007315DF /* AppDependencable.swift in Sources */,
 				ADA6EDAA239A57D9005BB9AA /* UIApplicationShortcutItem+Convenience.swift in Sources */,
 				C17E94842382A5E7007315DF /* Coordinating.swift in Sources */,
+				ADEDE5E223B1172C001C8238 /* UIFont+AppFonts.swift in Sources */,
 				AD598BEC23845A3B00762123 /* DetailViewModel.swift in Sources */,
 				C17E947D23829065007315DF /* WRO.swift in Sources */,
+				ADEDE5E023B1171E001C8238 /* UIColor+AppColors.swift in Sources */,
 				C133369D2372EA1100CD5247 /* FirebaseManager.swift in Sources */,
 				AD9FF3562386BB58007E1448 /* DetailSceneDelegate.swift in Sources */,
 				C1EEBD5E23707B70002E31DF /* AppCoordinator.swift in Sources */,

@@ -43,7 +43,7 @@ extension PlacesViewController: UITableViewDataSource {
         let cell: PlaceCell = tableView.dequeueReusableCell(for: indexPath)
         
         let item = viewModel.item(at: indexPath.row)
-        cell.textLabel?.text = item.name
+        cell.configuare(with: item)
         
         return cell
     }
@@ -83,8 +83,14 @@ private extension PlacesViewController {
     }
     
     func setupUI() {
+        view.backgroundColor = .appBackground
+        
+        navigationItem.title = "Goulash Places"
+        
         tableView = UITableView(frame: .zero, style: .plain)
         view.addSubview(tableView)
+        tableView.backgroundColor = .clear
+        tableView.separatorColor = .appSeparator
         tableView.attachToSuperview(useSafeArea: false)
         
         tableView.register(type: PlaceCell.self)

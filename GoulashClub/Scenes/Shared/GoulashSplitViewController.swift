@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GoulashSplitViewController: UISplitViewController, UISplitViewControllerDelegate {
+class GoulashSplitViewController: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

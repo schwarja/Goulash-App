@@ -24,6 +24,9 @@ class DefaultCoordinator: NSObject, Coordinating, Restorable {
     private(set) var childCoordinators: [Coordinating] = []
     private(set) var restorationActivity: DefaultSceneActivity?
     
+    // Bool indicating that split view is expanding
+    private var isExpanding = false
+    
     // Id of a place that should be shown to restore activity
     private var placeIdToShow: String?
     private lazy var masterCoordinator: ListCoordinator = {
@@ -42,6 +45,7 @@ class DefaultCoordinator: NSObject, Coordinating, Restorable {
         masterCoordinator.start()
         splitViewController.viewControllers = [masterCoordinator.rootViewController]
         masterCoordinator.rootViewController.delegate = self
+        splitViewController.delegate = self
         
         restorationActivity = DefaultSceneActivity()
         
@@ -88,25 +92,48 @@ extension DefaultCoordinator {
 // MARK: List coordinator delegate
 extension DefaultCoordinator: ListCoordinatorDelegate {
     func presentDetail(for place: Place) {
-        if masterCoordinator.rootViewController.viewControllers.count == 1 {
-            showDetail(for: place)
-        } else if masterCoordinator.rootViewController.viewControllers.count > 1 {
+        let options = shouldShowDetail(for: place)
+        if options.pop {
             masterCoordinator.rootViewController.popToRootViewController(animated: false)
+        }
+        if options.show {
             showDetail(for: place)
         }
+    }
+    
+    private func shouldShowDetail(for place: Place) -> (show: Bool, pop: Bool) {
+        let coodinator = childCoordinators.compactMap({ $0 as? DetailCoordinator }).first
+        
+        guard coodinator?.placeId != place.id else {
+            return (false, false)
+        }
+        
+        if masterCoordinator.rootViewController.viewControllers.count == 1 {
+            return (true, false)
+        } else if masterCoordinator.rootViewController.viewControllers.count > 1 {
+            return (true, true)
+        }
+        
+        return (false, false)
     }
     
     private func showDetail(for place: Place) {
         childCoordinators = childCoordinators.filter({ $0.identifier == self.masterCoordinator.identifier })
         
-        let detailCoordinator = DetailCoordinator(dependencies: dependencies, placeId: place.id)
+        let detailCoordinator = createDetail(for: place.id)
+
+        splitViewController.showDetailViewController(detailCoordinator.rootViewController, sender: masterCoordinator.rootViewController)
+    }
+    
+    private func createDetail(for placeId: String) -> DetailCoordinator {
+        let detailCoordinator = DetailCoordinator(dependencies: dependencies, placeId: placeId)
         detailCoordinator.delegateInSplitView = self
         childCoordinators.append(detailCoordinator)
         detailCoordinator.start()
         
-        restorationActivity?.didOpenDetail(for: place.id)
+        restorationActivity?.didOpenDetail(for: placeId)
 
-        splitViewController.showDetailViewController(detailCoordinator.rootViewController, sender: masterCoordinator.rootViewController)
+        return detailCoordinator
     }
 }
 
@@ -118,9 +145,31 @@ extension DefaultCoordinator: DetailCoordinatorInSplitDelegate {
     }
 }
 
+extension DefaultCoordinator: UISplitViewControllerDelegate {
+    func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
+        guard primaryViewController == masterCoordinator.rootViewController else {
+            return nil
+        }
+        
+        if masterCoordinator.rootViewController.viewControllers.count > 1 {
+            isExpanding = true
+        } else if case .ready(let places) = dependencies.databaseManager.places, let place = places.first {
+            let coordinator = createDetail(for: place.id)
+            return coordinator.rootViewController
+        }
+        
+        return nil
+    }
+}
+
 // MARK: Split view controller delegate
 extension DefaultCoordinator: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        guard !isExpanding else {
+            isExpanding = false
+            return
+        }
+        
         if navigationController.viewControllers.count == 1 {
             restorationActivity?.didCloseDetail()
             childCoordinators = childCoordinators.filter({ $0.identifier == self.masterCoordinator.identifier })

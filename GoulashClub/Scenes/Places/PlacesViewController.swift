@@ -91,6 +91,7 @@ private extension PlacesViewController {
         view.addSubview(tableView)
         tableView.backgroundColor = .clear
         tableView.separatorColor = .appSeparator
+        tableView.rowHeight = 96
         tableView.attachToSuperview(useSafeArea: false)
         
         tableView.register(type: PlaceCell.self)

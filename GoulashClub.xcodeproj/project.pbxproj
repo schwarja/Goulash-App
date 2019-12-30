@@ -22,6 +22,9 @@
 		ADEDE5EA23B1178B001C8238 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADEDE5E423B11782001C8238 /* SFProDisplay-Bold.ttf */; };
 		ADEDE5EB23B1178B001C8238 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADEDE5E523B11785001C8238 /* SFProDisplay-Regular.ttf */; };
 		ADEDE5EF23B1178B001C8238 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADEDE5E923B1178B001C8238 /* SFProDisplay-Semibold.ttf */; };
+		ADEDE5F123BA0711001C8238 /* UIImageView+FirebaseImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDE5F023BA0711001C8238 /* UIImageView+FirebaseImage.swift */; };
+		ADEDE5F323BA078E001C8238 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDE5F223BA078E001C8238 /* StorageManager.swift */; };
+		ADEDE5F523BA0E89001C8238 /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDE5F423BA0E89001C8238 /* UIImage+AppImages.swift */; };
 		ADEEF59C239A561F00FDE7FA /* DetailShortcutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEF59B239A561F00FDE7FA /* DetailShortcutItem.swift */; };
 		C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178817236ADC24005FC9C0 /* AppDelegate.swift */; };
 		C117881A236ADC24005FC9C0 /* DefaultSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178819236ADC24005FC9C0 /* DefaultSceneDelegate.swift */; };
@@ -74,6 +77,9 @@
 		ADEDE5E423B11782001C8238 /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		ADEDE5E523B11785001C8238 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		ADEDE5E923B1178B001C8238 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
+		ADEDE5F023BA0711001C8238 /* UIImageView+FirebaseImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+FirebaseImage.swift"; sourceTree = "<group>"; };
+		ADEDE5F223BA078E001C8238 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		ADEDE5F423BA0E89001C8238 /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
 		ADEEF59B239A561F00FDE7FA /* DetailShortcutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailShortcutItem.swift; sourceTree = "<group>"; };
 		C1178814236ADC24005FC9C0 /* GoulashClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoulashClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1178817236ADC24005FC9C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -265,6 +271,7 @@
 			children = (
 				C133369C2372EA1100CD5247 /* FirebaseManager.swift */,
 				C13336A12372EB0400CD5247 /* DataStatus.swift */,
+				ADEDE5F223BA078E001C8238 /* StorageManager.swift */,
 			);
 			path = Manag;
 			sourceTree = "<group>";
@@ -330,6 +337,8 @@
 				ADA6EDA9239A57D9005BB9AA /* UIApplicationShortcutItem+Convenience.swift */,
 				ADEDE5DF23B1171E001C8238 /* UIColor+AppColors.swift */,
 				ADEDE5E123B1172C001C8238 /* UIFont+AppFonts.swift */,
+				ADEDE5F023BA0711001C8238 /* UIImageView+FirebaseImage.swift */,
+				ADEDE5F423BA0E89001C8238 /* UIImage+AppImages.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -532,6 +541,7 @@
 				C17E94822382A483007315DF /* AppDependencable.swift in Sources */,
 				ADA6EDAA239A57D9005BB9AA /* UIApplicationShortcutItem+Convenience.swift in Sources */,
 				C17E94842382A5E7007315DF /* Coordinating.swift in Sources */,
+				ADEDE5F323BA078E001C8238 /* StorageManager.swift in Sources */,
 				ADEDE5E223B1172C001C8238 /* UIFont+AppFonts.swift in Sources */,
 				AD598BEC23845A3B00762123 /* DetailViewModel.swift in Sources */,
 				C17E947D23829065007315DF /* WRO.swift in Sources */,
@@ -541,6 +551,7 @@
 				C1EEBD5E23707B70002E31DF /* AppCoordinator.swift in Sources */,
 				C17E94932382AFC8007315DF /* DatabaseError.swift in Sources */,
 				C133368F23716B7200CD5247 /* DefaultCoordinator.swift in Sources */,
+				ADEDE5F523BA0E89001C8238 /* UIImage+AppImages.swift in Sources */,
 				ADD7CFC5238D93A9003C0A80 /* DefaultSceneActivity.swift in Sources */,
 				C17E94862382A87C007315DF /* PlacesViewModel.swift in Sources */,
 				C1EEBD4E237070D0002E31DF /* Constants.swift in Sources */,
@@ -569,6 +580,7 @@
 				C117881A236ADC24005FC9C0 /* DefaultSceneDelegate.swift in Sources */,
 				C1EEBD5623707235002E31DF /* DetailViewController.swift in Sources */,
 				C17E948B2382AD9E007315DF /* PlaceCell.swift in Sources */,
+				ADEDE5F123BA0711001C8238 /* UIImageView+FirebaseImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

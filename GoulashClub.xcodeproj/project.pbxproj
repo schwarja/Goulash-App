@@ -25,6 +25,8 @@
 		ADEDE5F123BA0711001C8238 /* UIImageView+FirebaseImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDE5F023BA0711001C8238 /* UIImageView+FirebaseImage.swift */; };
 		ADEDE5F323BA078E001C8238 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDE5F223BA078E001C8238 /* StorageManager.swift */; };
 		ADEDE5F523BA0E89001C8238 /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDE5F423BA0E89001C8238 /* UIImage+AppImages.swift */; };
+		ADEDE5F723BA3554001C8238 /* UIView+Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDE5F623BA3554001C8238 /* UIView+Gradients.swift */; };
+		ADEDE5F923BA5E73001C8238 /* GradienImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEDE5F823BA5E73001C8238 /* GradienImageView.swift */; };
 		ADEEF59C239A561F00FDE7FA /* DetailShortcutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEF59B239A561F00FDE7FA /* DetailShortcutItem.swift */; };
 		C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178817236ADC24005FC9C0 /* AppDelegate.swift */; };
 		C117881A236ADC24005FC9C0 /* DefaultSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1178819236ADC24005FC9C0 /* DefaultSceneDelegate.swift */; };
@@ -80,6 +82,8 @@
 		ADEDE5F023BA0711001C8238 /* UIImageView+FirebaseImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+FirebaseImage.swift"; sourceTree = "<group>"; };
 		ADEDE5F223BA078E001C8238 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		ADEDE5F423BA0E89001C8238 /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
+		ADEDE5F623BA3554001C8238 /* UIView+Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradients.swift"; sourceTree = "<group>"; };
+		ADEDE5F823BA5E73001C8238 /* GradienImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradienImageView.swift; sourceTree = "<group>"; };
 		ADEEF59B239A561F00FDE7FA /* DetailShortcutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailShortcutItem.swift; sourceTree = "<group>"; };
 		C1178814236ADC24005FC9C0 /* GoulashClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoulashClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1178817236ADC24005FC9C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				C17E948A2382AD9E007315DF /* PlaceCell.swift */,
+				ADEDE5F823BA5E73001C8238 /* GradienImageView.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				ADEDE5E123B1172C001C8238 /* UIFont+AppFonts.swift */,
 				ADEDE5F023BA0711001C8238 /* UIImageView+FirebaseImage.swift */,
 				ADEDE5F423BA0E89001C8238 /* UIImage+AppImages.swift */,
+				ADEDE5F623BA3554001C8238 /* UIView+Gradients.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -568,8 +574,10 @@
 				C1C84016237F1048001D6340 /* DatabaseManaging.swift in Sources */,
 				ADD7CFC0238D8E17003C0A80 /* Restorable.swift in Sources */,
 				C1178818236ADC24005FC9C0 /* AppDelegate.swift in Sources */,
+				ADEDE5F723BA3554001C8238 /* UIView+Gradients.swift in Sources */,
 				C1C84018237F1068001D6340 /* DatabaseListener.swift in Sources */,
 				C192743C23705C5100A81743 /* UIViewController+ConvenienceInit.swift in Sources */,
+				ADEDE5F923BA5E73001C8238 /* GradienImageView.swift in Sources */,
 				AD9FF3582386BB97007E1448 /* DetailCoordinator.swift in Sources */,
 				C1EEBD58237075E2002E31DF /* UIView+Layout.swift in Sources */,
 				ADEEF59C239A561F00FDE7FA /* DetailShortcutItem.swift in Sources */,

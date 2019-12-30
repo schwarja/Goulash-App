@@ -99,6 +99,33 @@ extension UIView {
         
         return constraints
     }
+    
+    @discardableResult
+    func constraint(toView view: UIView, widthMultiplier: LayoutSpecifier? = nil, heightMultiplier: LayoutSpecifier? = nil, priority: Float = 1000) -> [NSLayoutConstraint] {
+        guard let superview = self.superview else {
+            return []
+        }
+
+        translatesAutoresizingMaskIntoConstraints = false
+
+        var constraints: [NSLayoutConstraint] = []
+        
+        if let width = widthMultiplier {
+            let constraint = NSLayoutConstraint(item: self, attribute: .width, relatedBy: width.layoutRelation, toItem: view, attribute: .width, multiplier: width.layoutConstant, constant: 0)
+            constraint.priority = UILayoutPriority(priority)
+            superview.addConstraint(constraint)
+            constraints.append(constraint)
+        }
+
+        if let height = heightMultiplier {
+            let constraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: height.layoutRelation, toItem: view, attribute: .height, multiplier: height.layoutConstant, constant: 0)
+            constraint.priority = UILayoutPriority(priority)
+            superview.addConstraint(constraint)
+            constraints.append(constraint)
+        }
+        
+        return constraints
+    }
 
     func constraint(toAspectRatio ratio: LayoutSpecifier, priority: Float = 1000) {
         translatesAutoresizingMaskIntoConstraints = false

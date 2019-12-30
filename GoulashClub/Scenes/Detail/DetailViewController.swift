@@ -18,10 +18,15 @@ class DetailViewController: UIViewController {
     }
     
     // swiftlint:disable implicitly_unwrapped_optional
-    private var titleLabel: UILabel!
-    private var newWindowButton: UIButton?
+    private var scrollView: UIScrollView!
+    private var imageView: GradientImageView!
+    private var addressLabel: UILabel!
+    private var descriptionLabel: UILabel!
+    private var newWindowButton: UIBarButtonItem?
     private var closeButton: UIBarButtonItem?
     // swiftlint:enable implicitly_unwrapped_optional
+    
+    private let margin: CGFloat = 16
 
     private let dependency: Dependency
     private var viewModel: DetailViewModel {
@@ -41,6 +46,14 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         setup()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if self.traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle {
+            imageView.refresh()
+        }
     }
 }
 
@@ -73,32 +86,52 @@ private extension DetailViewController {
     func setupUI() {
         view.backgroundColor = .appBackground
         
-        titleLabel = UILabel()
-        titleLabel.font = .appTitle
-        titleLabel.textColor = .appText
-        view.addSubview(titleLabel)
+        scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(scrollView)
         
-        titleLabel.attachToSafeArea(left: ">=20", top: 20, right: ">=20")
-        titleLabel.attach(centerX: 0)
+        scrollView.attachToSafeArea(left: 0, right: 0)
+        scrollView.attach(top: 0, bottom: 0)
         
+        imageView = GradientImageView(withDirection: .bottomToTop, fraction: 0.5, startColor: UIColor.appBackground, endColor: UIColor.appBackground.withAlphaComponent(0))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        scrollView.addSubview(imageView)
+        
+        imageView.constraint(toAspectRatio: 1, priority: 900)
+        imageView.constraint(toView: scrollView, heightMultiplier: "<=0.5")
+        imageView.attach(left: 0, top: 0, right: 0)
+        imageView.constraint(width: 0, toView: scrollView)
+        
+        addressLabel = UILabel()
+        addressLabel.translatesAutoresizingMaskIntoConstraints = false
+        addressLabel.textColor = .appTextDimmed
+        addressLabel.font = .appText
+        scrollView.addSubview(addressLabel)
+        
+        addressLabel.attach(left: margin, right: ">=\(margin)")
+        addressLabel.attach(toView: imageView, bottom: margin)
+
+        descriptionLabel = UILabel()
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.font = .appText
+        descriptionLabel.textColor = .appText
+        descriptionLabel.numberOfLines = 0
+        scrollView.addSubview(descriptionLabel)
+        
+        descriptionLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        descriptionLabel.attach(left: margin, right: margin, bottom: margin, priority: 900)
+        descriptionLabel.below(view: imageView, constant: margin)
+
         if dependency.canRequestNewWindow {
-            let newWindowButton = UIButton()
-            newWindowButton.setTitleColor(.appText, for: .normal)
-            newWindowButton.titleLabel?.font = .appButton
-            newWindowButton.setTitle("Open in new window", for: .normal)
-            newWindowButton.addTarget(self, action: #selector(self.newWindowTapped), for: .touchUpInside)
-            view.addSubview(newWindowButton)
-            
-            newWindowButton.attachToSafeArea(left: ">=20", right: ">=20")
-            newWindowButton.attach(toView: titleLabel, top: 40)
-            newWindowButton.attach(centerX: 0)
-            
-            self.newWindowButton = newWindowButton
+            newWindowButton = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(self.newWindowTapped))
+            navigationItem.rightBarButtonItem = newWindowButton
         }
         
         if dependency.canBeDismissed {
             closeButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.closeTapped))
-            navigationItem.rightBarButtonItem = closeButton
+            navigationItem.leftBarButtonItem = closeButton
         }
         
         configureUI()
@@ -106,18 +139,16 @@ private extension DetailViewController {
     
     func configureUI() {
         switch viewModel.place {
-        case .initial:
+        case .initial, .loading, .error:
             navigationItem.title = ""
-            titleLabel.text = "No Place"
-        case .loading:
-            navigationItem.title = ""
-            titleLabel.text = "Loading"
-        case .error(let error):
-            navigationItem.title = ""
-            titleLabel.text = error.localizedDescription
+            imageView.image = .placePlaceholder
+            descriptionLabel.text = ""
+            addressLabel.text = ""
         case .ready(let place):
             navigationItem.title = place.name
-            titleLabel.text = ""
+            imageView.setStorageImage(from: place.imageStorageUrl, placeholder: .placePlaceholder)
+            descriptionLabel.text = place.description
+            addressLabel.text = place.address
         }
     }
 }

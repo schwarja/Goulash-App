@@ -11,6 +11,7 @@ import Foundation
 struct Place: Decodable {
     let id: String
     let name: String
+    let description: String
     let address: String
     let imageStorageUrl: String?
 }

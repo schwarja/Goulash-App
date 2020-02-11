@@ -24,11 +24,15 @@ class DetailSceneDelegate: UIResponder, UIWindowSceneDelegate {
         let sessionPlaceId = activity?.userInfo?[Constants.DetailSceneActivity.placeIdAttribute] as? String
         
         let shortcutPlaceId: String?
+        #if !targetEnvironment(macCatalyst)
         if let item = connectionOptions.shortcutItem, item.isDetailShortcut, let placeId = item.userInfo?[Constants.DetailShortcutItem.placeIdAttribute] as? String {
             shortcutPlaceId = placeId
         } else {
             shortcutPlaceId = nil
         }
+        #else
+        shortcutPlaceId = nil
+        #endif
         
         let window = UIWindow(windowScene: windowScene)
                 

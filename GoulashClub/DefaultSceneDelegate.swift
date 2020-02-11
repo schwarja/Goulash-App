@@ -33,9 +33,11 @@ class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         
+        #if !targetEnvironment(macCatalyst)
         if let item = connectionOptions.shortcutItem {
             process(shortcutItem: item)
         }
+        #endif
 
         self.window = window
         

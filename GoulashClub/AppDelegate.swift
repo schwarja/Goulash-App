@@ -74,7 +74,14 @@ extension AppDelegate {
 @available(iOS 13.0, *)
 extension AppDelegate {
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        if options.userActivities.firstDetailSceneActivity != nil || options.shortcutItem?.isDetailShortcut ?? false {
+        let isFromShortcut: Bool
+        #if !targetEnvironment(macCatalyst)
+        isFromShortcut = options.shortcutItem?.isDetailShortcut ?? false
+        #else
+        isFromShortcut = false
+        #endif
+        
+        if options.userActivities.firstDetailSceneActivity != nil || isFromShortcut {
             return UISceneConfiguration(name: Constants.Scenes.detail.rawValue, sessionRole: connectingSceneSession.role)
         } else {
             return UISceneConfiguration(name: Constants.Scenes.default.rawValue, sessionRole: connectingSceneSession.role)

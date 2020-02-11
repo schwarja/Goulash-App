@@ -25,6 +25,12 @@
 		<string>$(PRODUCT_BUNDLE_IDENTIFIER).default</string>
 		<string>$(PRODUCT_BUNDLE_IDENTIFIER).placeDetail</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SFProDisplay-Bold.ttf</string>
+		<string>SFProDisplay-Semibold.ttf</string>
+		<string>SFProDisplay-Regular.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -66,12 +72,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-        <string>SFProDisplay-Bold.ttf</string>
-        <string>SFProDisplay-Semibold.ttf</string>
-        <string>SFProDisplay-Regular.ttf</string>
 	</array>
 </dict>
 </plist>
